@@ -1,29 +1,92 @@
-/* Keep existing styles */
-
 body {
   font-family: 'Comic Sans MS', sans-serif;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   background-color: #df6908;
-  margin: 100;
-  padding: 240;
+  margin: 0;
+  padding: 0;
 }
 
-.header-main {
+/* Headers */
+.header-main, .header-secondary, .header-ternary {
   font-family: 'Comic Sans MS', sans-serif;
-  background-color: #3b097e;
   color: #fff;
-  padding: 1rem;
+  padding: 1.0rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
-
+ /* Header Styles */
+.header-main {
+  background-color: blue;
+  position: relative;
+  overflow: hidden;
+}
 .header-secondary {
-    font-family: 'Calibri', sans-serif;
-    background-color: aqua;
-    color: #0e0d0d;
-    padding: 1rem;
-    text-align: center;
+  background-color: rgb(231, 172, 9);
+}
+.header-ternary {
+  background-color: rgb(202, 14, 93);
+  color: black;
+}
+.header-main h1, .header-secondary h1, .header-ternary h1 {
+  margin: 0;
+  z-index: 1;
+  position: relative;
 }
 
+.header-secondary, .header-ternary {
+  display:ruby;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Logo Styles (Main + Brand) */
+.header-logo, .brand-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+.header-title-with-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+/* Hover Effects for Logo */
+.header-logo:hover, .brand-logo:hover {
+  animation: spin 0.5s linear infinite, glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Spin and Glow Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 4px gold) drop-shadow(0 0 8px red);
+  }
+  to {
+    filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 20px red);
+  }
+}
+
+/* Car Gallery */
 .car-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -32,13 +95,14 @@ body {
   gap: 1.5rem;
 }
 
+/* Car Card */
 .car-card {
-  background-color: #df0c0c;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(224, 29, 29, 0.1);
+  background: rgb(7, 228, 7);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   width: 300px;
   text-align: center;
-  overflow: hidden;
   transition: transform 0.2s;
 }
 
@@ -48,35 +112,40 @@ body {
 
 .car-card img {
   width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.car-card h2 {
-  margin: 0.5rem 0;
-}
-
-.car-card p {
-  padding: 0 1rem 1rem;
-}
-
-.car-card {
-  background: rgb(7, 228, 7);
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.car-card:hover {
-  transform: scale(1.02);
-}
-
-.car-card img {
-  width: 300px;      /* Fixed width */
-  height: 200px;     /* Fixed height */
-  object-fit: cover; /* Maintain aspect ratio and crop overflow */
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
   display: block;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1rem;
+}
+
+/* Header Animation */
+.animate-header {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideDownFade 1.5s ease-out forwards;
+}
+
+@keyframes slideDownFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Car Entry Animation */
+.animate-car {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.animate-car.show {
+  animation: slideInFade 0.6s ease-out forwards;
+}
+
+@keyframes slideInFade {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
