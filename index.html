@@ -1,108 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexugun's Digital Car Collection</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class = "header-main animate-header">
-    <div class="header-title-with-logo">
-      <img src="Images/Logo/Official-logo.png" alt="NG Logo" class="header-logo" />
-      <h1>NEXUGUNS GARAGE</h1>
-    </div>  
-  </header>
-
-  <header class = "header-secondary animate-header">
-    <h1>LAMBORGHINI</h1>
-    <img src="Images/Logo/lamborghini-logo.png" alt="Lamborghini Logo" class="brand-logo" />
-  </header></h1>
-
-  <section class="car-gallery">
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Temerario</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Temerario.jpg" alt="Lamborghini Temerario" />
-      <h3>2026 – "Authentic Fuoriclasse"</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexugun's Digital Car Collection</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class = "header-main animate-header">
+      <div class="header-title-with-logo">
+        <img src="Images/Logo/Official-logo.png" alt="NG Logo" class="header-logo" />
+        <h1>NEXUGUNS GARAGE</h1>
+      </div>  
+    </header>
+    <!-- Search and Filter Bar -->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search cars by name..." />
+      <select id="brandFilter">
+        <option value="">All Brands</option>
+        <option value="Lamborghini">Lamborghini</option>
+        <option value="Bugatti">Bugatti</option>
+        <!-- Add more brands as needed -->
+      </select>
+      <select id="yearFilter">
+        <option value="">All Years</option>
+        <option value="2026">2026</option>
+        <option value="2024">2024</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2016">2016</option>
+        <option value="2013">2013</option>
+        <option value="2003">2003</option>
+        <option value="2001">2001</option>
+        <!-- Add more years dynamically if you want -->
+      </select>
+      <select id="sortYear">
+        <option value="">Sort by Year</option>
+        <option value="desc">Newest to Oldest</option>
+        <option value="asc">Oldest to Newest</option>
+      </select>
     </div>
-
-    <div class="car-card animate-car">
+    <!-- Lamborghini Header -->
+    <header class = "header-secondary animate-header">
+      <h1>LAMBORGHINI</h1>
+      <img src="Images/Logo/lamborghini-logo.png" alt="Lamborghini Logo" class="brand-logo" />
+    </header></h1>
+    <!-- Car Gallery: Lamborghini -->
+    <section class="car-gallery" id="carGallery">
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2026">
+        <h2>Lamborghini Temerario</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Temerario.jpg" alt="Lamborghini Temerario" />
+        <h3>2026 – "Authentic Fuoriclasse"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2024">
         <h2> Lamborghini Revuelto</h2>
         <img src= "Images/Lamborghini/Lamborghini_Revuelto.jpg" alt="Lamborghini Revuelto" />
         <h3>2024 - "From Now On"</h3>
-    </div>
-
-    <div class="car-card animate-car">
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2024">
         <h2> Lamborghini Urus</h2>
         <img src= "Images/Lamborghini/Lamborghini_Urus.jpg" alt="Lamborghini Urus" />
         <h3>2024 - "Unlock Any Road"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Huracán</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Huracan.jpg" alt="Lamborghini Huracán" />
-      <h3>2024 – "Every Day Amplified"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Aventador</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Aventador.jpg" alt="Lamborghini Aventador" />
-      <h3>2019 – "Designed To Push Beyond Performance"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Sian</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Sian.jpg" alt="Lamborghini Sian" />
-      <h3>2019 – "An Icon"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Centenario</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Centenario.jpg" alt="Lamborghini Centenario" />
-      <h3>2016 – "Tribute to the Future"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Egoista</h2>
-      <img src= "Images/Lamborghini/lamborghini-egoista.jpg" alt="Lamborghini Egoista" />
-      <h3>2013 – "A Car for Itself"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Gallardo</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Gallardo.jpg" alt="Lamborghini Gallardo" />
-      <h3>2003 – "Expect The Unexpected"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Lamborghini Murciélago</h2>
-      <img src= "Images/Lamborghini/Lamborghini_Murciélago.jpg" alt="Lamborghini Murciélago" />
-      <h3>2001 – "Not just a car, but a statement"</h3>
-    </div>
-
-    <!-- Add more car cards here -->
-  </section>
-
-  <header class = "header-ternary animate-header">
-    <h1>BUGATTI</h1>
-    <img src="Images/Logo/Bugatti-logo.jpg" alt="Bugatti Logo" class="brand-logo" />
-  </header>
-
-  <section class="car-gallery">
-    <div class="car-card animate-car">
-      <h2>Bugatti Centodieci</h2>
-      <img src= "Images/Bugatti/Bugatti_Centodieci.jpg" alt="Bugatti Centodieci" />
-      <h3>2019 – "Reminiscence Of An Icon"</h3>
-    </div>
-
-    <div class="car-card animate-car">
-      <h2>Bugatti Divo</h2>
-      <img src= "Images/Bugatti/Bugatti_Divo.jpg" alt="Bugatti Divo" />
-      <h3>2018 – "Modern coachbuilding at its best"</h3>
-    </div>
-
-  </section>
-  <script src="script.js"></script>
-</body>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2024">
+        <h2>Lamborghini Huracán</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Huracan.jpg" alt="Lamborghini Huracán" />
+        <h3>2024 – "Every Day Amplified"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2019">
+        <h2>Lamborghini Aventador</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Aventador.jpg" alt="Lamborghini Aventador" />
+        <h3>2019 – "Designed To Push Beyond Performance"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2019">
+        <h2>Lamborghini Sian</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Sian.jpg" alt="Lamborghini Sian" />
+        <h3>2019 – "An Icon"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2016">
+        <h2>Lamborghini Centenario</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Centenario.jpg" alt="Lamborghini Centenario" />
+        <h3>2016 – "Tribute to the Future"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2013">
+        <h2>Lamborghini Egoista</h2>
+        <img src= "Images/Lamborghini/lamborghini-egoista.jpg" alt="Lamborghini Egoista" />
+        <h3>2013 – "A Car for Itself"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2003">
+        <h2>Lamborghini Gallardo</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Gallardo.jpg" alt="Lamborghini Gallardo" />
+        <h3>2003 – "Expect The Unexpected"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Lamborghini" data-year="2001">
+        <h2>Lamborghini Murciélago</h2>
+        <img src= "Images/Lamborghini/Lamborghini_Murciélago.jpg" alt="Lamborghini Murciélago" />
+        <h3>2001 – "Not just a car, but a statement"</h3>
+      </div>
+      <!-- Add more car cards here -->
+    </section>
+    <!-- Bugatti Header -->
+    <header class = "header-ternary animate-header">
+      <h1>BUGATTI</h1>
+      <img src="Images/Logo/Bugatti-logo.jpg" alt="Bugatti Logo" class="brand-logo" />
+    </header>
+    <!-- Car Gallery: Bugatti -->
+    <section class="car-gallery" id="carGallery">
+      <div class="car-card animate-car" data-brand="Bugatti" data-year="2019">
+        <h2>Bugatti Centodieci</h2>
+        <img src= "Images/Bugatti/Bugatti_Centodieci.jpg" alt="Bugatti Centodieci" />
+        <h3>2019 – "Reminiscence Of An Icon"</h3>
+      </div>
+      <div class="car-card animate-car" data-brand="Bugatti" data-year="2018">
+        <h2>Bugatti Divo</h2>
+        <img src= "Images/Bugatti/Bugatti_Divo.jpg" alt="Bugatti Divo" />
+        <h3>2018 – "Modern coachbuilding at its best"</h3>
+      </div>
+      <!-- Add more Bugatti cars here -->
+    </section>
+    <script src="script.js"></script>
+  </body>
 </html>

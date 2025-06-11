@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   font-family: 'Comic Sans MS', sans-serif;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
@@ -5,8 +6,7 @@ body {
   margin: 0;
   padding: 0;
 }
-
-/* Headers */
+/* Header Styles */
 .header-main, .header-secondary, .header-ternary {
   font-family: 'Comic Sans MS', sans-serif;
   color: #fff;
@@ -20,7 +20,6 @@ body {
   justify-content: center;
   gap: 1rem;
 }
- /* Header Styles */
 .header-main {
   background-color: blue;
   position: relative;
@@ -38,14 +37,12 @@ body {
   z-index: 1;
   position: relative;
 }
-
 .header-secondary, .header-ternary {
   display:ruby;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
-
 /* Logo Styles (Main + Brand) */
 .header-logo, .brand-logo {
   width: 60px;
@@ -57,26 +54,22 @@ body {
   transition: transform 0.6s ease;
   cursor: pointer;
 }
-
 .header-title-with-logo {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
 }
-
 /* Hover Effects for Logo */
 .header-logo:hover, .brand-logo:hover {
   animation: spin 0.5s linear infinite, glow 1.5s ease-in-out infinite alternate;
 }
-
 /* Spin and Glow Animations */
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
-
 @keyframes glow {
   from {
     filter: drop-shadow(0 0 4px gold) drop-shadow(0 0 8px red);
@@ -85,7 +78,6 @@ body {
     filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 20px red);
   }
 }
-
 /* Car Gallery */
 .car-gallery {
   display: flex;
@@ -94,8 +86,7 @@ body {
   padding: 2rem;
   gap: 1.5rem;
 }
-
-/* Car Card */
+/* Car Cards */
 .car-card {
   background: rgb(7, 228, 7);
   padding: 16px;
@@ -105,11 +96,9 @@ body {
   text-align: center;
   transition: transform 0.2s;
 }
-
 .car-card:hover {
   transform: scale(1.03);
 }
-
 .car-card img {
   width: 100%;
   height: 200px;
@@ -118,7 +107,6 @@ body {
   display: block;
   margin: 0 auto 1rem;
 }
-
 /* Header Animation */
 .animate-header {
   opacity: 0;
@@ -148,4 +136,82 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Input and Select styles */
+.search-container input,
+.search-container select {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Make search bar wider than filters */
+#searchInput {
+  width: 300px;
+}
+
+#brandFilter,
+#yearFilter,
+#sortFilter {
+  width: 180px;
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+  }
+}
+
+#lightbox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: none;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #000;
+  border-radius: 16px;
+  padding: 12px;
+  z-index: 9999;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#lightbox.active {
+  display: block;
+}
+
+#lightbox img {
+  max-width: 1400px;
+  max-height: 900px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Blur class applied to body children */
+body.blurred > *:not(#lightbox) {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+/* Lightbox fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
