@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 /* Header Styles */
 .header-main, .header-secondary, .header-ternary {
   font-family: 'Comic Sans MS', sans-serif;
@@ -37,12 +38,15 @@ body {
   z-index: 1;
   position: relative;
 }
+
+/* Remove invalid display property */
 .header-secondary, .header-ternary {
-  display:ruby;
+  display: ruby;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
+
 /* Logo Styles (Main + Brand) */
 .header-logo, .brand-logo {
   width: 60px;
@@ -60,24 +64,21 @@ body {
   justify-content: flex-start;
   gap: 1rem;
 }
+
 /* Hover Effects for Logo */
 .header-logo:hover, .brand-logo:hover {
   animation: spin 0.5s linear infinite, glow 1.5s ease-in-out infinite alternate;
 }
+
 /* Spin and Glow Animations */
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 @keyframes glow {
-  from {
-    filter: drop-shadow(0 0 4px gold) drop-shadow(0 0 8px red);
-  }
-  to {
-    filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 20px red);
-  }
+  from { filter: drop-shadow(0 0 4px gold) drop-shadow(0 0 8px red); }
+  to   { filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 20px red); }
 }
+
 /* Car Gallery */
 .car-gallery {
   display: flex;
@@ -86,6 +87,7 @@ body {
   padding: 2rem;
   gap: 1.5rem;
 }
+
 /* Car Cards */
 .car-card {
   background: rgb(7, 228, 7);
@@ -107,13 +109,13 @@ body {
   display: block;
   margin: 0 auto 1rem;
 }
+
 /* Header Animation */
 .animate-header {
   opacity: 0;
   transform: translateY(-30px);
   animation: slideDownFade 1.5s ease-out forwards;
 }
-
 @keyframes slideDownFade {
   to {
     opacity: 1;
@@ -126,11 +128,9 @@ body {
   opacity: 0;
   transform: translateX(40px);
 }
-
 .animate-car.show {
   animation: slideInFade 0.6s ease-out forwards;
 }
-
 @keyframes slideInFade {
   to {
     opacity: 1;
@@ -138,6 +138,7 @@ body {
   }
 }
 
+/* Search Container */
 .search-container {
   display: flex;
   justify-content: center;
@@ -159,24 +160,21 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
-
-/* Make search bar wider than filters */
 #searchInput {
   width: 300px;
 }
-
 #brandFilter,
 #yearFilter,
 #sortFilter {
   width: 180px;
 }
-
 @media (max-width: 600px) {
   .search-container {
     flex-direction: column;
   }
 }
 
+/* Lightbox Styles */
 #lightbox {
   position: fixed;
   top: 50%;
@@ -192,26 +190,60 @@ body {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
   animation: fadeIn 0.3s ease-in-out;
 }
-
 #lightbox.active {
   display: block;
 }
-
 #lightbox img {
   max-width: 1400px;
   max-height: 900px;
   border-radius: 12px;
   object-fit: contain;
 }
-
-/* Blur class applied to body children */
 body.blurred > *:not(#lightbox) {
   filter: blur(5px);
   transition: filter 0.3s ease;
 }
-
-/* Lightbox fade in */
 @keyframes fadeIn {
   from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.tab-button {
+  background-color: #cddb0c;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.tab-button:hover {
+  background-color: #555;
+}
+.tab-button.active-tab {
+  background-color: #04118b;
+  color: #fff;
+}
+
+/* Brand Blocks & Sections */
+.brand-block {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.brand-section {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.brand-block.active-block .brand-section {
+  display: flex;
 }
