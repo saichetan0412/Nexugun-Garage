@@ -8,7 +8,7 @@ body {
 }
 
 /* Header Styles */
-.header-main, .header-secondary, .header-ternary {
+.header-main, .header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche {
   font-family: 'Comic Sans MS', sans-serif;
   color: #fff;
   padding: 1.0rem;
@@ -26,21 +26,29 @@ body {
   position: relative;
   overflow: hidden;
 }
-.header-secondary {
+.header-lamborghini {
   background-color: rgb(231, 172, 9);
 }
-.header-ternary {
+.header-bugatti {
   background-color: rgb(202, 14, 93);
   color: black;
 }
-.header-main h1, .header-secondary h1, .header-ternary h1 {
+.header-ferrari {
+  background-color: rgb(255, 0, 0);
+  color: black;
+}
+.header-porsche {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+.header-main h1, .header-lamborghini h1, .header-bugatti h1, .header-ferrari h1, .header-porsche h1 {
   margin: 0;
   z-index: 1;
   position: relative;
 }
 
 /* Remove invalid display property */
-.header-secondary, .header-ternary {
+.header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche {
   display: ruby;
   align-items: center;
   justify-content: center;
@@ -67,7 +75,7 @@ body {
 
 /* Hover Effects for Logo */
 .header-logo:hover, .brand-logo:hover {
-  animation: spin 0.5s linear infinite, glow 1.5s ease-in-out infinite alternate;
+  animation: spin 0.2s linear infinite, glow 1.5s ease-in-out infinite alternate;
 }
 
 /* Spin and Glow Animations */
@@ -216,7 +224,7 @@ body.blurred > *:not(#lightbox) {
   margin-top: 1rem;
 }
 .tab-button {
-  background-color: #cddb0c;
+  background-color: #11111000;
   color: white;
   padding: 0.8rem 1.2rem;
   border: none;
@@ -226,7 +234,7 @@ body.blurred > *:not(#lightbox) {
   transition: background-color 0.3s ease;
 }
 .tab-button:hover {
-  background-color: #555;
+  background-color: #816f6f;
 }
 .tab-button.active-tab {
   background-color: #04118b;
@@ -246,4 +254,84 @@ body.blurred > *:not(#lightbox) {
 }
 .brand-block.active-block .brand-section {
   display: flex;
+}
+
+/* Enhanced Modal Styles */
+#logoModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background: linear-gradient(135deg, #ffe29f, #ffa99f, #ff719a);
+  border: 4px solid #222;
+  border-radius: 24px;
+  padding: 24px;
+  z-index: 9999;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  animation: fadeInModal 0.4s ease-out;
+  text-align: center;
+  color: #000;
+}
+
+/* Modal Entrance Animation */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Modal Image (Larger & Framed) */
+#modalImage {
+  width: 50%;
+  max-height: 400px;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 30%/50%;
+  border: 5px solid white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  background-color: #fff; /* Fallback background to fill empty space */
+}
+
+/* Modal Text */
+#modalTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #1b003a;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+#modalSubtitle {
+  font-size: 1.2rem;
+  color: #333;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+/* Close Button */
+#closeModal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+#closeModal:hover {
+  background-color: darkred;
 }

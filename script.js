@@ -234,3 +234,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+// Logo Modal
+document.querySelectorAll('.header-logo, .brand-logo').forEach(logo => {
+  let hoverTimer;
+
+  logo.addEventListener('mouseenter', () => {
+    hoverTimer = setTimeout(() => {
+      showModalForLogo(logo);
+    }, 3000); // 3 seconds
+  });
+
+  logo.addEventListener('mouseleave', () => {
+    clearTimeout(hoverTimer);
+  });
+});
+
+function showModalForLogo(logo) {
+  const brand = logo.getAttribute('data-brand') || "Brand";
+  const personName = logo.getAttribute('data-person-name') || "Unknown Person";
+  const imagePath = logo.getAttribute('data-modal-image') || "Images/default-profile.jpg";
+
+  const modal = document.getElementById("logoModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalSubtitle = document.getElementById("modalSubtitle");
+
+  modalImage.src = imagePath;
+  modalTitle.textContent = personName;
+  modalSubtitle.textContent = `Founder of ${brand}`;
+
+  modal.style.display = "block";
+}
+
+// Close modal when clicking outside the modal content
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("logoModal");
+  const modalContent = document.querySelector("#logoModal .modal-content");
+
+  // If modal and modalContent exist, and modal is visible and clicked outside the content area
+  if (
+    modal &&
+    modalContent &&
+    modal.style.display === "block" &&
+    !modalContent.contains(event.target)
+  ) {
+    modal.style.display = "none";
+  }
+});

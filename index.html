@@ -10,7 +10,7 @@
     <!-- Header -->
     <header class = "header-main animate-header">
       <div class="header-title-with-logo">
-        <img src="Images/Logo/Official-logo.png" alt="NG Logo" class="header-logo" />
+        <img class="header-logo" src="Images/Logo/Official-logo.png" alt="NG Logo" data-brand="NEXUGUNS GARAGE" data-modal-image="Images/Nexus.jpg" data-person-name="Nexus"/>
         <h1>NEXUGUNS GARAGE</h1>
       </div>  
     </header>
@@ -21,12 +21,19 @@
         <option value="">All Brands</option>
         <option value="Lamborghini">Lamborghini</option>
         <option value="Bugatti">Bugatti</option>
+        <option value="Ferrari">Ferrari</option>
+        <option value="Porsche">Porsche</option>
         <!-- Add more brands as needed -->
       </select>
       <select id="yearFilter">
         <option value="">All Years</option>
         <option value="2026">2026</option>
+        <option value="2025">2025</option>
         <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
         <option value="2019">2019</option>
         <option value="2018">2018</option>
         <option value="2016">2016</option>
@@ -47,13 +54,15 @@
       <button class="tab-button active" data-brand="All">All</button>
       <button class="tab-button" data-brand="Lamborghini">Lamborghini</button>
       <button class="tab-button" data-brand="Bugatti">Bugatti</button>
+      <button class="tab-button" data-brand="Ferrari">Ferrari</button>
+      <button class="tab-button" data-brand="Porsche">Porsche</button>
       <!-- Add more brands as needed -->
     </div>
     <!-- Lamborghini Header -->
     <div class="brand-block" data-brand="Lamborghini">
-      <div class="header-secondary animate-header">
-        <img class="brand-logo" src="Images/Logo/lamborghini-logo.png" alt="Lamborghini Logo" />
+      <div class="header-lamborghini animate-header">
         <h1>LAMBORGHINI</h1>
+        <img class="brand-logo" src="Images/Logo/lamborghini-logo.png" alt="Lamborghini Logo" data-brand="Lamborghini" data-modal-image="Images/Ferruccio.jpg" data-person-name="Ferruccio Lamborghini"/>
      </div>
       <!-- Car Gallery: Lamborghini -->
       <section class="car-gallery brand-section">
@@ -107,14 +116,24 @@
           <img src= "Images/Lamborghini/Lamborghini_Murciélago.jpg" alt="Lamborghini Murciélago" />
           <h3>2001 – "Not just a car, but a statement"</h3>
         </div>
+        <div class="car-card animate-car" data-brand="Lamborghini" data-year="1999">
+          <h2>Lamborghini Diablo</h2>
+          <img src= "Images/Lamborghini/Lamborghini_Diablo.jpeg" alt="Lamborghini Diablo" />
+          <h3>1999 – "The Legend Lives On"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Lamborghini" data-year="1999">
+          <h2>Lamborghini Countach</h2>
+          <img src= "Images/Lamborghini/Lamborghini-Countach.jpg" alt="Lamborghini Countach" />
+          <h3>1999 – "The Iconic Supercar"</h3>
+        </div>
         <!-- Add more car cards here -->
       </section>
     </div>
     <!-- Bugatti Header -->
     <div class="brand-block" data-brand="Bugatti">
-      <div class="header-ternary animate-header">
-        <img class="brand-logo" src="Images/Logo/Bugatti-logo.jpg" alt="Bugatti Logo">
+      <div class="header-bugatti animate-header">
         <h1>BUGATTI</h1>
+        <img class="brand-logo" src="Images/Logo/Bugatti-logo.jpg" alt="Bugatti Logo" data-brand="Bugatti" data-modal-image="Images/Ettore.jpg" data-person-name="Ettore Bugatti"/>
       </div>
       <!-- Car Gallery: Bugatti -->
       <section class="car-gallery brand-section">
@@ -125,11 +144,207 @@
         </div>
         <div class="car-card animate-car" data-brand="Bugatti" data-year="2018">
           <h2>Bugatti Divo</h2>
-          <img src= "Images/Bugatti/Bugatti_Divo.jpg" alt="Bugatti Divo" />
+          <img src="Images/Bugatti/Bugatti_Divo.jpg" alt="Bugatti Divo" />
           <h3>2018 – "Modern coachbuilding at its best"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="2016">
+          <h2>Bugatti Chiron</h2>
+          <img src="Images/Bugatti/Bugatti_Chiron" alt="Bugatti Chiron" />
+          <h3>2016 – "Breaking new dimensions"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="2019">
+          <h2>Bugatti La Voiture Noire</h2>
+          <img src="Images/Bugatti/Bugatti_La_Voiture_Noire.jpg" alt="Bugatti La Voiture Noire" />
+          <h3>2019 – "The ultimate GT"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="2010">
+          <h2>Bugatti Veyron Super Sport</h2>
+          <img src="Images/Bugatti/Bugatti_Veyron.jpg" alt="Bugatti Veyron Super Sport" />
+          <h3>2010 – "World's fastest production car"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="2016">
+          <h2>Bugatti Vision Gran Turismo</h2>
+          <img src="Images/Bugatti/Bugatti-Vision-Gran-Turismo" alt="Bugatti Vision Gran Turismo" />
+          <h3>2016 – "Virtual to reality"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="2022">
+          <h2>Bugatti Mistral</h2>
+          <img src="Images/Bugatti/Bugatti_Mistral.jpg" alt="Bugatti Mistral" />
+          <h3>2022 – "The ultimate roadster"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="1994">
+          <h2>Bugatti EB110 SS</h2>
+          <img src="Images/Bugatti/Bugatti_EB110_SS.jpeg" alt="Bugatti EB110 SS" />
+          <h3>1994 – "Super Sport Legend"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="1991">
+          <h2>Bugatti EB110 GT</h2>
+          <img src="Images/Bugatti/Bugatti_EB110_GT" alt="Bugatti EB110 GT" />
+          <h3>1991 – "Revival of the Brand"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="1939">
+          <h2>Bugatti Type 57C Atlantic</h2>
+          <img src="Images/Bugatti/Bugatti_Type57SC_Atlantic" alt="Bugatti Type 57C Atlantic" />
+          <h3>1939 – "Art Deco Icon"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Bugatti" data-year="1927">
+          <h2>Bugatti Type 35</h2>
+          <img src="Images/Bugatti/Bugatti_Type_35" alt="Bugatti Type 35" />
+          <h3>1927 – "Grand Prix Champion"</h3>
         </div>
         <!-- Add more Bugatti cars here -->
       </section>
+    </div>
+    <!-- Ferrari Header -->
+    <div class="brand-block" data-brand="Ferrari">
+      <div class="header-ferrari animate-header">
+        <h1>FERRARI</h1>
+        <img class="brand-logo" src="Images/Logo/ferrari-logo.jpg" alt="Ferrari Logo" data-brand="Ferrari" data-modal-image="Images/Enzo" data-person-name="Enzo Ferrari"/>
+      </div>
+      <!-- Car Gallery: Ferrari -->
+      <section class="car-gallery brand-section">
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2026">
+          <h2>Ferrari Purosangue</h2>
+          <img src= "Images/Ferrari/Ferrari_Purosangue.jpg" alt="Ferrari Purosangue"/>
+          <h3>2026 – "The First Four Door Ferrari"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2024">
+          <h2>Ferrari SF90 Stradale</h2>
+          <img src= "Images/Ferrari/Ferrari_SF90_Stradale" alt="Ferrari SF90 Stradale" />
+          <h3>2024 – "The Pinnacle of Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2024">
+          <h2>Ferrari F8 Tributo</h2>
+          <img src= "Images/Ferrari/Ferrari_F8_Tributo.jpg" alt="Ferrari F8 Tributo" />
+          <h3>2019 – "A celebration of excellence"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2023">
+          <h2>Ferrari 296 GTB</h2>
+          <img src= "Images/Ferrari/Ferrari_296_GTB.jpg" alt="Ferrari 296 GTB" />
+          <h3>2023 – "The Future of Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2022">
+          <h2>Ferrari 812 Competizione</h2>
+          <img src= "Images/Ferrari/Ferrari-Competizione.jpg" alt="Ferrari 812 Competizione" />
+          <h3>2022 – "The Ultimate V12 Experience"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2021">
+          <h2>Ferrari Roma</h2>
+          <img src= "Images/Ferrari/Ferrari_Roma.jpg" alt="Ferrari Roma" />
+          <h3>2021 – "Elegance Meets Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2020">
+          <h2>Ferrari F8 Spider</h2>
+          <img src="Images/Ferrari/Ferrari_F8_Spider.jpg" alt="Ferrari F8 Spider" />
+          <h3>2020 – "Open Air Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2019">
+          <h2>Ferrari Monza SP2</h2>
+          <img src="Images/Ferrari/ferrari_Monza_SP2" alt="Ferrari Monza SP2" />
+          <h3>2019 – "Icona Series Speedster"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2017">
+          <h2>Ferrari 812 Superfast</h2>
+          <img src="Images/Ferrari/Ferrari_812_Superfast.jpg" alt="Ferrari 812 Superfast" />
+          <h3>2017 – "The Most Powerful V12"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2015">
+          <h2>Ferrari 488 GTB</h2>
+          <img src="Images/Ferrari/Ferrari-488-GTB" alt="Ferrari 488 GTB" />
+          <h3>2015 – "Turbocharged Excellence"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2013">
+          <h2>Ferrari LaFerrari</h2>
+          <img src="Images/Ferrari/Ferrari_LaFerrari.webp" alt="Ferrari LaFerrari" />
+          <h3>2013 – "Hybrid Hypercar"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Ferrari" data-year="2012">
+          <h2>Ferrari F12berlinetta</h2>
+          <img src="Images/Ferrari/Ferrari_F12_Berlinetta.webp" alt="Ferrari F12berlinetta" />
+          <h3>2012 – "V12 Grand Tourer"</h3>
+        </div>
+        <!-- Add more Ferrari cars here -->
+      </section>
+    </div>
+    <!-- Porsche Header -->
+    <div class="brand-block" data-brand="Porsche">
+      <div class="header-porsche animate-header">
+        <h1>PORSCHE</h1>
+        <img class="brand-logo" src="Images/Logo/Porsche-logo" alt="Porsche Logo" data-brand="Porsche" data-modal-image="Images/Ferdinand.jpeg" data-person-name="Ferdinand Porsche"/>
+      </div>
+      <!-- Car Gallery: Porsche -->
+      <section class="car-gallery brand-section">
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2024">
+          <h2>Porsche 911 GT3</h2>
+          <img src= "Images/Porsche/Porsche_911_GT3.jpg" alt="Porsche 911 GT3" />
+          <h3>2024 – "The Ultimate Track Machine"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2023">
+          <h2>Porsche Taycan</h2>
+          <img src= "Images/Porsche/Porsche_Taycan.jpg" alt="Porsche Taycan" />
+          <h3>2023 – "Electric Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2022">
+          <h2>Porsche Macan</h2>
+          <img src= "Images/Porsche/Porsche_Macan.jpg" alt="Porsche Macan" />
+          <h3>2022 – "Compact Luxury SUV"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2021">
+          <h2>Porsche Cayenne</h2>
+          <img src= "Images/Porsche/Porsche_Cayenne.jpg" alt="Porsche Cayenne" />
+          <h3>2021 – "Luxury Meets Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2020">
+          <h2>Porsche 718 Cayman</h2>
+          <img src= "Images/Porsche/Porsche_718_Cayman.jpg" alt="Porsche 718 Cayman" />
+          <h3>2020 – "Pure Driving Pleasure"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2019">
+          <h2>Porsche Panamera</h2>
+          <img src= "Images/Porsche/Porsche_Panamera.jpg" alt="Porsche Panamera" />
+          <h3>2019 – "Luxury Sports Sedan"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2018">
+          <h2>Porsche 911 Carrera</h2>
+          <img src= "Images/Porsche/Porsche_911_Carrera.jpg" alt="Porsche 911 Carrera" />
+          <h3>2018 – "Timeless Icon"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2017">
+          <h2>Porsche 918 Spyder</h2>
+          <img src= "Images/Porsche/Porsche_918_Spyder.jpg" alt="Porsche 918 Spyder" />
+          <h3>2017 – "Hybrid Hypercar"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2016">
+          <h2>Porsche 911 Turbo S</h2>
+          <img src= "Images/Porsche/Porsche_911_Turbo_S.jpg" alt="Porsche 911 Turbo S" />
+          <h3>2016 – "Unmatched Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2015">
+          <h2>Porsche Boxster</h2>
+          <img src= "Images/Porsche/Porsche_Boxster.jpg" alt="Porsche Boxster" />
+          <h3>2015 – "Open-Top Sports Car"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2014">
+          <h2>Porsche 911 GT3 RS</h2>
+          <img src= "Images/Porsche/Porsche_911_GT3_RS.jpg" alt="Porsche 911 GT3 RS" />
+          <h3>2014 – "Track-Focused Performance"</h3>
+        </div>
+        <div class="car-card animate-car" data-brand="Porsche" data-year="2013">
+          <h2>Porsche 911 Carrera S</h2>
+          <img src= "Images/Porsche/Porsche_911_Carrera_S.jpg" alt="Porsche 911 Carrera S" />
+          <h3>2013 – "The Essence of Porsche"</h3>
+        </div>
+        <!-- Add more Porsche cars here -->
+      </section>
+    </div>
+    <!-- Logo Info Modal -->
+    <div id="logoModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <img id="modalImage" src="" alt="Logo Preview" />
+        <h2 id="modalTitle">Brand Name</h2>
+        <p id="modalSubtitle">Founder of Brand</p>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
