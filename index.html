@@ -10,7 +10,7 @@
     <!-- Header -->
     <header class = "header-main animate-header">
       <div class="header-title-with-logo">
-        <img class="header-logo" src="Images/Logo/Official-logo.png" alt="NG Logo" data-brand="NEXUGUNS GARAGE" data-modal-image="Images/Nexus.jpg" data-person-name="Nexus"/>
+        <img src="Images/Logo/Official-logo.png" class="header-logo" data-title="NEXUGUNS GARAGE" data-description="Designed by Nexus" data-image="Images/Nexus.jpg" alt="NG Logo"/>
         <h1>NEXUGUNS GARAGE</h1>
       </div>  
     </header>
@@ -25,28 +25,23 @@
         <option value="Porsche">Porsche</option>
         <!-- Add more brands as needed -->
       </select>
-      <select id="yearFilter">
-        <option value="">All Years</option>
-        <option value="2026">2026</option>
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-        <option value="2022">2022</option>
-        <option value="2021">2021</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2016">2016</option>
-        <option value="2013">2013</option>
-        <option value="2003">2003</option>
-        <option value="2001">2001</option>
-        <option value="1999">1999</option>
-        <!-- Add more years dynamically if you want -->
-      </select>
-      <select id="sortYear">
+      <!-- Year Filter -->
+      <div class="year-picker">
+        <input type="text" id="yearInput" readonly placeholder="Select Year" />
+        <div id="yearDropdown" class="year-dropdown hidden">
+          <div class="year-nav">
+            <button id="prevYears">«</button>
+            <span id="yearRangeLabel">2020–2028</span>
+            <button id="nextYears">»</button>
+          </div>
+          <div class="year-grid" id="yearGrid"></div>
+        </div>
+      </div>
+      <!-- Sort Filter -->
+      <select id="sortFilter">
         <option value="">Sort by Year</option>
-        <option value="desc">Newest to Oldest</option>
         <option value="asc">Oldest to Newest</option>
+        <option value="desc">Newest to Oldest</option>
       </select>
     </div>
     <!-- CATEGORY TABS -->
@@ -62,7 +57,7 @@
     <div class="brand-block" data-brand="Lamborghini">
       <div class="header-lamborghini animate-header">
         <h1>LAMBORGHINI</h1>
-        <img class="brand-logo" src="Images/Logo/lamborghini-logo.png" alt="Lamborghini Logo" data-brand="Lamborghini" data-modal-image="Images/Ferruccio.jpg" data-person-name="Ferruccio Lamborghini"/>
+        <img src="Images/Logo/lamborghini-logo.png" class="brand-logo" data-title="Lamborghini" data-description="Founded by Ferruccio Lamborghini" data-image="Images/Ferruccio.jpg" alt="Lamborghini Logo"/>
      </div>
       <!-- Car Gallery: Lamborghini -->
       <section class="car-gallery brand-section">
@@ -133,7 +128,7 @@
     <div class="brand-block" data-brand="Bugatti">
       <div class="header-bugatti animate-header">
         <h1>BUGATTI</h1>
-        <img class="brand-logo" src="Images/Logo/Bugatti-logo.jpg" alt="Bugatti Logo" data-brand="Bugatti" data-modal-image="Images/Ettore.jpg" data-person-name="Ettore Bugatti"/>
+        <img src="Images/Logo/Bugatti-logo.jpg" class="brand-logo" data-title="Bugatti" data-description="Founded by cEttore Bugatti" data-image="Images/Ettore" alt="Bugatti Logo"/>
       </div>
       <!-- Car Gallery: Bugatti -->
       <section class="car-gallery brand-section">
@@ -199,7 +194,7 @@
     <div class="brand-block" data-brand="Ferrari">
       <div class="header-ferrari animate-header">
         <h1>FERRARI</h1>
-        <img class="brand-logo" src="Images/Logo/ferrari-logo.jpg" alt="Ferrari Logo" data-brand="Ferrari" data-modal-image="Images/Enzo" data-person-name="Enzo Ferrari"/>
+        <img src="Images/Logo/ferrari-logo.jpg" class="brand-logo" data-title="Ferrari" data-description="Founded by Enzo Ferrari" data-image="Images/Enzo" alt="Ferrari Logo"/>
       </div>
       <!-- Car Gallery: Ferrari -->
       <section class="car-gallery brand-section">
@@ -270,7 +265,7 @@
     <div class="brand-block" data-brand="Porsche">
       <div class="header-porsche animate-header">
         <h1>PORSCHE</h1>
-        <img class="brand-logo" src="Images/Logo/Porsche-logo" alt="Porsche Logo" data-brand="Porsche" data-modal-image="Images/Ferdinand.jpeg" data-person-name="Ferdinand Porsche"/>
+        <img src="Images/Logo/Porsche-logo" class="brand-logo" data-title="Porsche" data-description="Founded by Ferdinand Porsche" data-image="Images/Ferdinand.jpeg" alt="Porsche Logo"/>
       </div>
       <!-- Car Gallery: Porsche -->
       <section class="car-gallery brand-section">
@@ -316,7 +311,7 @@
         </div>
         <div class="car-card animate-car" data-brand="Porsche" data-year="2016">
           <h2>Porsche 911 Turbo S</h2>
-          <img src= "Images/Porsche/Porsche_911_Turbo_S.jpg" alt="Porsche 911 Turbo S" />
+          <img src= "Images/Porsche/Porsche-911_Turbo_S.jpg" alt="Porsche 911 Turbo S" />
           <h3>2016 – "Unmatched Performance"</h3>
         </div>
         <div class="car-card animate-car" data-brand="Porsche" data-year="2015">
@@ -337,14 +332,19 @@
         <!-- Add more Porsche cars here -->
       </section>
     </div>
-    <!-- Logo Info Modal -->
-    <div id="logoModal" class="modal">
+    <!-- Modal Structure -->
+    <div id="logoModal" class="logo-modal">
       <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <img id="modalImage" src="" alt="Logo Preview" />
-        <h2 id="modalTitle">Brand Name</h2>
-        <p id="modalSubtitle">Founder of Brand</p>
+        <span class="close-button">&times;</span>
+        <img id="modalImage" src="" alt="Brand Image" />
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
       </div>
+    </div>
+    <!-- Lightbox Overlay -->
+    <div id="lightboxOverlay" class="lightbox-overlay">
+      <span class="lightbox-close">&times;</span>
+      <img id="lightboxImage" class="lightbox-image" src="" alt="Enlarged view" />
     </div>
     <script src="script.js"></script>
   </body>

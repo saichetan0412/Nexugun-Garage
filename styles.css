@@ -172,7 +172,6 @@ body {
   width: 300px;
 }
 #brandFilter,
-#yearFilter,
 #sortFilter {
   width: 180px;
 }
@@ -255,83 +254,205 @@ body.blurred > *:not(#lightbox) {
 .brand-block.active-block .brand-section {
   display: flex;
 }
-
-/* Enhanced Modal Styles */
-#logoModal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Add CSS styles for the Logo Modal */
+/* The Image which we will be providing should fit the container */
+/* The modal also contains a close button */
+/* In the modal, below the image, we will have a title and description which will be alligned in center*/
+/* Modal Overlay */
+.logo-modal {
   display: none;
-  background: linear-gradient(135deg, #ffe29f, #ffa99f, #ff719a);
-  border: 4px solid #222;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.6);
+}
+
+/* Modal Box */
+.modal-content {
+  background: linear-gradient(135deg, #fefcea, #f1da36);
+  margin: 8% auto;
+  padding: 30px;
   border-radius: 24px;
-  padding: 24px;
-  z-index: 9999;
-  width: 90%;
-  max-width: 800px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-  animation: fadeInModal 0.4s ease-out;
+  width: 600px;
+  max-width: 95%;
   text-align: center;
-  color: #000;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease-out;
 }
 
-/* Modal Entrance Animation */
-@keyframes fadeInModal {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -60%) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+/* Modal Image - Elongated Circle */
+.modal-content img {
+  width: 260px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50% / 40%;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-/* Modal Image (Larger & Framed) */
-#modalImage {
-  width: 50%;
-  max-height: 400px;
-  height: 250px;
-  object-fit: contain;
-  border-radius: 30%/50%;
-  border: 5px solid white;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-  margin-bottom: 1rem;
-  background-color: #fff; /* Fallback background to fill empty space */
-}
-
-/* Modal Text */
-#modalTitle {
-  font-size: 2rem;
-  font-weight: bold;
+/* Title & Description */
+.modal-content h2 {
   margin: 0.5rem 0;
-  color: #1b003a;
-  text-shadow: 1px 1px 2px #fff;
+  font-size: 1.6rem;
+  color: #222;
 }
-
-#modalSubtitle {
-  font-size: 1.2rem;
+.modal-content p {
+  font-size: 1.1rem;
   color: #333;
-  text-shadow: 1px 1px 2px #fff;
 }
 
 /* Close Button */
-#closeModal {
+.close-button {
   position: absolute;
-  top: 12px;
-  right: 16px;
-  font-size: 1.5rem;
-  background: crimson;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  right: 15px;
+  top: 10px;
+  font-size: 1.8rem;
+  color: #333;
   cursor: pointer;
   font-weight: bold;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
 }
-#closeModal:hover {
-  background-color: darkred;
+.close-button:hover {
+  transform: scale(1.3);
 }
+
+@keyframes spinContinuous {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinning-continuous {
+  animation: spinContinuous 0.5s linear infinite;
+}
+
+/* Pop In Animation */
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Lightbox overlay */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: 290%;
+  max-height: 290%;
+  border: 5px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Optional for responsiveness */
+}
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 20px 0;
+  position: relative;
+}
+
+.filters-container input[type="text"],
+.filters-container select {
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Year Picker container should not shift things */
+.year-picker {
+  position: relative;
+  width: 250px;
+}
+
+.year-dropdown {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.year-dropdown.hidden {
+  display: none;
+}
+
+.year-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.year-grid div {
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.year-grid div:hover {
+  background-color: #dcdcdc;
+} 
+
+
+

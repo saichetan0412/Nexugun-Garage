@@ -65,35 +65,106 @@ function filterByBrand() {
   }
 }
 
-//CarSearchByYear
-function filterByYear() {
-  const selectedYear = document.getElementById('yearFilter')?.value || 'All';
+//CarYearFilter
+document.addEventListener("DOMContentLoaded", () => {
+  const yearInput = document.getElementById("yearInput");
+  const yearDropdown = document.getElementById("yearDropdown");
+  const yearGrid = document.getElementById("yearGrid");
+  const prevYearsBtn = document.getElementById("prevYears");
+  const nextYearsBtn = document.getElementById("nextYears");
+  const yearRangeLabel = document.getElementById("yearRangeLabel");
+
+  const minYear = 1900;
+  const maxYear = 2030;
+  const step = 9;
+
+  let currentStartYear = 2020; // Initial range displayed
+
+  function renderYears() {
+    yearGrid.innerHTML = "";
+    yearRangeLabel.textContent = `${currentStartYear}–${currentStartYear + step - 1}`;
+
+    for (let i = 0; i < step; i++) {
+      const year = currentStartYear + i;
+      if (year > maxYear) break;
+
+      const yearDiv = document.createElement("div");
+      yearDiv.textContent = year;
+      yearDiv.addEventListener("click", () => {
+        yearInput.value = year;
+        yearDropdown.classList.add("hidden");
+        filterCars(); // Call your filter function if needed
+      });
+      yearGrid.appendChild(yearDiv);
+    }
+
+    // Disable navigation buttons appropriately
+    prevYearsBtn.disabled = currentStartYear <= minYear;
+    nextYearsBtn.disabled = currentStartYear + step > maxYear;
+  }
+
+  // Show dropdown
+  yearInput.addEventListener("click", () => {
+    yearDropdown.classList.toggle("hidden");
+    renderYears();
+  });
+
+  // Navigation
+  prevYearsBtn.addEventListener("click", () => {
+    if (currentStartYear - step >= minYear) {
+      currentStartYear -= step;
+      renderYears();
+    }
+  });
+
+  nextYearsBtn.addEventListener("click", () => {
+    if (currentStartYear + step <= maxYear) {
+      currentStartYear += step;
+      renderYears();
+    }
+  });
+
+  // Close dropdown if clicked outside
+  window.addEventListener("click", (e) => {
+    if (!yearDropdown.contains(e.target) && e.target !== yearInput) {
+      yearDropdown.classList.add("hidden");
+    }
+  });
+});
+
+function filterCars() {
+  const selectedYear = document.getElementById('yearInput')?.value;
   const carCards = document.querySelectorAll('.car-card');
   const brandBlocks = document.querySelectorAll('.brand-block');
-  if (selectedYear === 'All') {
-    // Show everything
+
+  if (!selectedYear) {
+    // No year selected, show all
     carCards.forEach(card => card.style.display = 'block');
     brandBlocks.forEach(block => block.style.display = 'block');
-  } else {
-    const visibleBrands = new Set();
-    // Show/hide cars based on year
-    carCards.forEach(card => {
-      const cardYear = card.getAttribute('data-year');
-      if (cardYear === selectedYear) {
-        card.style.display = 'block';
-        visibleBrands.add(card.getAttribute('data-brand'));
-      } else {
-        card.style.display = 'none';
-      }
-    });
-    // Show headers only if their brand has a visible car
-    brandBlocks.forEach(block => {
-      const blockBrand = block.getAttribute('data-brand');
-      block.style.display = visibleBrands.has(blockBrand) ? 'block' : 'none';
-    });
+    return;
   }
+
+  const matchedBrands = new Set();
+
+  carCards.forEach(card => {
+    const cardYear = card.getAttribute('data-year');
+    const isMatch = cardYear === selectedYear;
+    card.style.display = isMatch ? 'block' : 'none';
+
+    if (isMatch) {
+      const brand = card.getAttribute('data-brand');
+      if (brand) matchedBrands.add(brand);
+    }
+  });
+
+  // Show brand headers only for matched cars
+  brandBlocks.forEach(block => {
+    const brand = block.getAttribute('data-brand');
+    block.style.display = matchedBrands.has(brand) ? 'block' : 'none';
+  });
 }
 
+    
 //CarSortByYear
 function setupSortByYear() {
   const sortSelect = document.getElementById('sortYear');
@@ -235,50 +306,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// Logo Modal
-document.querySelectorAll('.header-logo, .brand-logo').forEach(logo => {
-  let hoverTimer;
-
-  logo.addEventListener('mouseenter', () => {
-    hoverTimer = setTimeout(() => {
-      showModalForLogo(logo);
-    }, 3000); // 3 seconds
-  });
-
-  logo.addEventListener('mouseleave', () => {
-    clearTimeout(hoverTimer);
-  });
-});
-
-function showModalForLogo(logo) {
-  const brand = logo.getAttribute('data-brand') || "Brand";
-  const personName = logo.getAttribute('data-person-name') || "Unknown Person";
-  const imagePath = logo.getAttribute('data-modal-image') || "Images/default-profile.jpg";
-
+/* Code for the bahaviour pf the Logo Modal */
+/* When user hovers on the logo, the logo should rotate for 2 seconds and then the modal should open */
+/* In the Modal, we will have an Image, a Title, a Description, and a Button to close the Modal */
+/* The Image src will be local, The title will be different for each logo, the title will be car brand, and the description will be the founder of Car brand*/
+/* This image, title, and description will be coming from HTML code*/
+/* When user clicks on the close button, the modal should close and the logo should rotate back to its original position */
+/* When the user clicks anywhere outside the modal, the modal should close and the logo should rotate back to its original position */
+document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("logoModal");
   const modalImage = document.getElementById("modalImage");
   const modalTitle = document.getElementById("modalTitle");
-  const modalSubtitle = document.getElementById("modalSubtitle");
+  const modalDescription = document.getElementById("modalDescription");
+  const closeButton = document.querySelector(".close-button");
 
-  modalImage.src = imagePath;
-  modalTitle.textContent = personName;
-  modalSubtitle.textContent = `Founder of ${brand}`;
+  const logos = document.querySelectorAll(".brand-logo").forEach(logo => {
+    logo.addEventListener("mouseover", () => {
+      logo.classList.add("spinning-continuous");
+      setTimeout(() => {
+        logo.classList.remove("spinning-continuous");
+        modal.style.display = "block";
+        modalImage.src = logo.getAttribute("data-image");
+        modalTitle.textContent = logo.getAttribute("data-title");
+        modalDescription.textContent = logo.getAttribute("data-description");
 
-  modal.style.display = "block";
-}
+        // Fetch content from HTML
+        const modalData = document.querySelector(`.modal-data[data-brand="${brand}"]`);
+        if (modalData) {
+          modalImage.src = modalData.querySelector("img").src;
+          modalTitle.textContent = modalData.querySelector("h2").textContent;
+          modalDescription.textContent = modalData.querySelector("p").textContent;
+        }
+        
+        modal.style.display = "block";
+      }, 2000); // Spins for 2 seconds
+    });
+  });
 
-// Close modal when clicking outside the modal content
-window.addEventListener("click", function (event) {
-  const modal = document.getElementById("logoModal");
-  const modalContent = document.querySelector("#logoModal .modal-content");
-
-  // If modal and modalContent exist, and modal is visible and clicked outside the content area
-  if (
-    modal &&
-    modalContent &&
-    modal.style.display === "block" &&
-    !modalContent.contains(event.target)
-  ) {
+  // Close Modal
+  closeButton.addEventListener("click", () => {
     modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+// Add spin animation via CSS
+const style = document.createElement("style");
+style.innerHTML = `
+  .brand-logo.spinning {
+    animation: spinLogo 0.25s linear;
+  }
+
+  @keyframes spinLogo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+`;
+document.head.appendChild(style);
+
+const modalImage = document.getElementById("modalImage");
+const lightboxOverlay = document.getElementById("lightboxOverlay");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+// Open lightbox on modal image click
+modalImage.addEventListener("click", () => {
+  lightboxImage.src = modalImage.src;
+  lightboxOverlay.classList.add("active");
+});
+
+// Close lightbox when clicking the close button or outside the image
+lightboxOverlay.addEventListener("click", (e) => {
+  if (e.target === lightboxOverlay || e.target === lightboxClose) {
+    lightboxOverlay.classList.remove("active");
   }
 });
+
