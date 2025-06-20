@@ -454,5 +454,102 @@ body.blurred > *:not(#lightbox) {
   background-color: #dcdcdc;
 } 
 
+.clear-year {
+  display: block;
+  margin: 10px auto;
+  padding: 6px 12px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.clear-year:hover {
+  background: #c0392b;
+}
+
+/* View Toggle */
+.view-toggle {
+  display: flex;
+  justify-content: right;
+  margin: 20px 140px;
+}
+.view-toggle button {
+  background: #18d606;
+  border:#222;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.view-toggle button:hover {
+  background: #16b505;
+}
+body.list-view .car-gallery {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* List View Styles */
+body.list-view .car-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto 1rem auto;
+  padding: 5px 18px;
+  gap: 20px;
+  background: #0dc406; /* or your preferred background */
+}
+
+body.list-view .car-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 220px;
+  max-width: 170px;
+  gap: 5px;
+}
+
+body.list-view .car-card-left img {
+  width: 200px;
+  height: 140px;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+body.list-view .car-card-left h2 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.2rem;
+}
+
+body.list-view .car-card-left p {
+  margin: 0 0 0.2rem 0;
+  font-size: 1rem;
+}
+
+body.list-view .car-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: flex-end;
+  flex: 1;
+  gap: 0.3rem;
+  padding-top: 4px;
+}
+
+body.list-view .car-card-right p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+
+
+
+
+
 
 

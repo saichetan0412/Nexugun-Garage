@@ -1,3 +1,5 @@
+let carData = []; // Holds all car objects
+
 //CaarAnimation
 function animateCars() {
   const cars = document.querySelectorAll(".animate-car");
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const step = 9;
 
   let currentStartYear = 2020; // Initial range displayed
-
+  
   function renderYears() {
     yearGrid.innerHTML = "";
     yearRangeLabel.textContent = `${currentStartYear}–${currentStartYear + step - 1}`;
@@ -132,6 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const clearYearBtn = document.getElementById("clearYear");
+clearYearBtn.addEventListener("click", () => {
+  yearInput.value = '';
+  yearDropdown.classList.add("hidden");
+  filterCars();
+});
+
 function filterCars() {
   const selectedYear = document.getElementById('yearInput')?.value;
   const carCards = document.querySelectorAll('.car-card');
@@ -167,7 +176,7 @@ function filterCars() {
     
 //CarSortByYear
 function setupSortByYear() {
-  const sortSelect = document.getElementById('sortYear');
+  const sortSelect = document.getElementById('sortFilter');
   if (!sortSelect) return;
   sortSelect.addEventListener('change', function () {
     const sortOrder = this.value;
@@ -204,23 +213,92 @@ function setupCarForm() {
     const desc = document.getElementById('carDesc')?.value;
     const brand = document.getElementById('carBrand')?.value;
     const image = document.getElementById('carImage')?.value || `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
-    const carCard = document.createElement('div');
+    
+    
+    const newCar = { name, year, description: desc, brand, image };
+    carData.push(newCar); // Update global car list
     carCard.className = 'car-card animate-car';
-    carCard.setAttribute('data-brand', brand);
-    carCard.setAttribute('data-year', year);
-    carCard.innerHTML = `
-      <img src="${image}" alt="${name}" />
-      <h2>${name}</h2>
-      <p>${year} – ${desc}</p>
-    `;
-    const gallery = document.getElementById('carGallery') || document.querySelector('.car-gallery:last-of-type');
-    gallery.appendChild(carCard);
+    renderCars(carData); // Re-render the gallery using view/filter-aware renderer
     this.reset();
+
     const index = document.querySelectorAll(".animate-car").length - 1;
     carCard.style.animationDelay = `${index * 300}ms`;
     setTimeout(() => carCard.classList.add("show"), 10);
   });
 }
+
+// Ensure all car cards have data-description set
+function ensureDescriptions() {
+  document.querySelectorAll('.car-card').forEach(card => {
+    if (!card.getAttribute('data-description')) {
+      const h3 = card.querySelector('h3');
+      if (h3) {
+        // Extract quoted text or use full h3 text
+        const match = h3.textContent.match(/["“](.+?)["”]/);
+        const desc = match ? match[1] : h3.textContent;
+        card.setAttribute('data-description', desc);
+      }
+    }
+  });
+}
+
+//CarRender
+function renderCars() {
+  const isList = document.body.classList.contains('list-view');
+  const carCards = document.querySelectorAll('.car-card');
+
+  carCards.forEach(card => {
+    // Always read from data-* attributes
+    const name = card.getAttribute('data-name') || card.querySelector('h2')?.textContent || '';
+    const image = card.querySelector('img')?.getAttribute('src') || '';
+    const year = card.getAttribute('data-year') || '';
+    const brand = card.getAttribute('data-brand') || '';
+    const engine = card.getAttribute('data-engine') || '';
+    const topSpeed = card.getAttribute('data-topspeed') || '';
+    const price = card.getAttribute('data-price') || '';
+    // Try to get description from data-description, or from <h3>
+    let description = card.getAttribute('data-description');
+    if (!description) {
+      const h3 = card.querySelector('h3');
+      if (h3) {
+        // Try to extract quoted text from h3
+        const match = h3.textContent.match(/["“](.+?)["”]/);
+        description = match ? match[1] : h3.textContent;
+      } else {
+        description = '';
+      }
+    }
+
+    // Build new card for list/grid
+    let cardHTML = '';
+    if (isList) {
+      cardHTML = `
+        <div class="car-card-left">
+          <img src="${image}" alt="${name}" />
+          <div>
+            <h2>${name}</h2>
+            <p><strong>Brand:</strong> ${brand}</p>
+            <p><strong>Year:</strong> ${year}</p>
+            <p><strong>Description:</strong> ${description || 'N/A'}</p>
+          </div>
+        </div>
+        <div class="car-card-right">
+          <p><strong>Engine:</strong> ${engine || 'N/A'}</p>
+          <p><strong>Top Speed:</strong> ${topSpeed || 'N/A'}</p>
+          <p><strong>Price:</strong> ${price || 'N/A'}</p>
+        </div>
+      `;
+    } else {
+      cardHTML = `
+        <img src="${image}" alt="${name}" />
+        <h2>${name}</h2>
+        <p>${year} – ${description}</p>
+      `;
+    }
+    card.innerHTML = cardHTML;
+  });
+}
+
 
 //Car - Lightbox effect
 function setupLightbox() {
@@ -283,28 +361,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const yearFilter = document.getElementById('yearFilter');
     if (yearFilter) yearFilter.addEventListener('change', filterByYear);
-
-//Car - DOMContentLoaded
-document.addEventListener("DOMContentLoaded", () => {
-  animateCars();
-  setupCarForm();
-  setupSortByYear();
-  setupLightbox();
-  setupTabs();
-  searchCars();
-  filterByBrand();
-  filterByYear();
-
-  const searchInput = document.getElementById('searchInput');
-  const brandFilter = document.getElementById('brandFilter');
-  const yearFilter = document.getElementById('yearFilter');
-
-  if (searchInput) searchInput.addEventListener('input', applyFilters);
-  if (brandFilter) brandFilter.addEventListener('change', applyFilters);
-  if (yearFilter) yearFilter.addEventListener('change', applyFilters);
-
-
-});
 
 /* Code for the bahaviour pf the Logo Modal */
 /* When user hovers on the logo, the logo should rotate for 2 seconds and then the modal should open */
@@ -387,3 +443,39 @@ lightboxOverlay.addEventListener("click", (e) => {
   }
 });
 
+//Car - DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+  animateCars();
+  searchCars();
+  filterByBrand();
+  filterCars();
+  setupSortByYear();
+  setupCarForm();
+  setupLightbox();
+  setupTabs();
+  filterByYear();
+  ensureDescriptions();
+  
+  const searchInput = document.getElementById('searchInput');
+  const brandFilter = document.getElementById('brandFilter');
+  const yearFilter = document.getElementById('yearFilter');
+
+  if (searchInput) searchInput.addEventListener('input', applyFilters);
+  if (brandFilter) brandFilter.addEventListener('change', applyFilters);
+  if (yearFilter) yearFilter.addEventListener('change', applyFilters);
+});
+
+// Toggle between list and grid view
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("toggleViewBtn");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("list-view");
+    // Change button text
+    toggleBtn.textContent = document.body.classList.contains("list-view")
+      ? "Switch to Grid View"
+      : "Switch to List View";
+    // Re-render cars for new layout
+    ensureDescriptions();
+    renderCars();
+  });
+});
