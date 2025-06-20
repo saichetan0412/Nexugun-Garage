@@ -8,7 +8,7 @@ body {
 }
 
 /* Header Styles */
-.header-main, .header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche {
+.header-main, .header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche, .header-rollsroyce {
   font-family: 'Comic Sans MS', sans-serif;
   color: #fff;
   padding: 1.0rem;
@@ -41,14 +41,18 @@ body {
   background-color: rgb(0, 0, 0);
   color: white;
 }
-.header-main h1, .header-lamborghini h1, .header-bugatti h1, .header-ferrari h1, .header-porsche h1 {
+.header-rollsroyce {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.header-main h1, .header-lamborghini h1, .header-bugatti h1, .header-ferrari h1, .header-porsche h1, .header-rollsroyce h1 {
   margin: 0;
   z-index: 1;
   position: relative;
 }
 
 /* Remove invalid display property */
-.header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche {
+.header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche, .header-rollsroyce {
   display: ruby;
   align-items: center;
   justify-content: center;
@@ -223,14 +227,16 @@ body.blurred > *:not(#lightbox) {
   margin-top: 1rem;
 }
 .tab-button {
-  background-color: #11111000;
-  color: white;
-  padding: 0.8rem 1.2rem;
+  background-color: hsl(342, 91%, 46%);
+  color: rgb(20, 1, 1);
+  padding: 10px 20px; /* Reduced padding for less length/height */
   border: none;
-  border-radius: 11px;
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: bold;
+  font-size: medium;
+  font-weight: bolder;
   transition: background-color 0.3s ease;
+  margin: 30px 0 30px 10px;
 }
 .tab-button:hover {
   background-color: #816f6f;
@@ -471,8 +477,10 @@ body.blurred > *:not(#lightbox) {
 /* View Toggle */
 .view-toggle {
   display: flex;
-  justify-content: right;
-  margin: 20px 140px;
+  justify-content: flex-end;
+  margin: 20px 1cm 20px auto;
+  max-width: 1200px;
+  width: 100%;
 }
 .view-toggle button {
   background: #18d606;
@@ -544,6 +552,28 @@ body.list-view .car-card-right {
 body.list-view .car-card-right p {
   margin: 0;
   font-size: 1rem;
+}
+
+/* Style the compare checkbox */
+.compare-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #1abc9c; /* Modern browsers: custom color */
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: 6px;
+  vertical-align: middle;
+}
+
+/* Optional: position checkbox at top-right of card */
+.car-card {
+  position: relative;
+}
+.compare-checkbox {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
 }
 
 

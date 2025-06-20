@@ -273,6 +273,7 @@ function renderCars() {
     let cardHTML = '';
     if (isList) {
       cardHTML = `
+        <input type="checkbox" class="compare-checkbox" data-car-id="${card.getAttribute('data-name') || name}">
         <div class="car-card-left">
           <img src="${image}" alt="${name}" />
           <div>
@@ -290,6 +291,7 @@ function renderCars() {
       `;
     } else {
       cardHTML = `
+        <input type="checkbox" class="compare-checkbox" data-car-id="${card.getAttribute('data-name') || name}">
         <img src="${image}" alt="${name}" />
         <h2>${name}</h2>
         <p>${year} – ${description}</p>
@@ -478,4 +480,54 @@ document.addEventListener("DOMContentLoaded", () => {
     ensureDescriptions();
     renderCars();
   });
+});
+
+// Compare Cars Logic
+let selectedCars = [];
+
+function updateCompareBar() {
+  const bar = document.getElementById('compareBar');
+  const count = document.getElementById('compareCount');
+  const compareBtn = document.getElementById('compareBtn');
+  if (selectedCars.length >= 2) {
+    bar.style.display = 'block';
+    compareBtn.disabled = selectedCars.length > 4 || selectedCars.length < 2;
+    count.textContent = selectedCars.length;
+  } else {
+    bar.style.display = 'none';
+    count.textContent = selectedCars.length;
+  }
+}
+
+document.addEventListener('change', (e) => {
+  if (e.target.classList.contains('compare-checkbox')) {
+    const carId = e.target.getAttribute('data-car-id');
+    if (e.target.checked) {
+      if (selectedCars.length >= 4) {
+        e.target.checked = false;
+        alert('You can compare a maximum of 4 cars.');
+        return;
+      }
+      if (!selectedCars.includes(carId)) selectedCars.push(carId);
+    } else {
+      selectedCars = selectedCars.filter(id => id !== carId);
+    }
+    updateCompareBar();
+  }
+});
+
+document.getElementById('clearCompareBtn').addEventListener('click', () => {
+  selectedCars = [];
+  document.querySelectorAll('.compare-checkbox').forEach(cb => cb.checked = false);
+  updateCompareBar();
+});
+
+// Placeholder for compare button click
+document.getElementById('compareBtn').addEventListener('click', () => {
+  if (selectedCars.length < 2) {
+    alert('Please select at least 2 cars to compare.');
+    return;
+  }
+  // Show comparison modal here!
+  alert('Show comparison modal here!');
 });
