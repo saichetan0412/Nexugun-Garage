@@ -523,6 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ensureDescriptions();
   setupLogoModal();
   setupLightboxOverlay();
+  loadCarsFromCSV();
 
   // Toggle between list and grid view
   const toggleBtn = $("#toggleViewBtn");
@@ -541,3 +542,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Utility to parse CSV (simple version)
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim());
+  return lines.slice(1).map(line => {
+    const values = line.split(',').map(v => v.trim());
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = values[i]);
+    return obj;
+  });
+}
+
+// Load cars from CSV and render
+function loadCarsFromCSV() {
+  fetch('Cars.csv')
+    .then(response => response.text())
+    .then(csv => {
+      carData = Papa.parse(csv, { header: true }).data;
+      renderAllCars();
+    });
+}
+
+// Render all cars into their brand sections
+function renderAllCars() {
+  $all('.car-gallery').forEach(gallery => gallery.innerHTML = '');
+  carData.forEach(car => {
+    const section = document.querySelector(`.car-gallery[data-brand="${car['BRAND']}"]`);
+    if (!section) return;
+    const card = document.createElement('div');
+    card.className = 'car-card animate-car';
+    card.setAttribute('data-brand', car['BRAND']);
+    card.setAttribute('data-year', car['YEAR']);
+    card.setAttribute('data-engine', car['ENGINE'] || '');
+    card.setAttribute('data-topspeed', car['TOP SPEED'] || '');
+    card.setAttribute('data-price', car['PRICE'] || '');
+    card.setAttribute('data-description', car['DESCRIPTION'] || '');
+    card.innerHTML = `
+      <h2>${car['CAR MODEL']}</h2>
+      <img src="${car['IMAGE PATH']}" alt="${car['CAR MODEL']}" />
+      <h3>${car['YEAR']} – "${car['DESCRIPTION']}"</h3>
+    `;
+    section.appendChild(card);
+  });
+  animateCars();
+  ensureDescriptions();
+  renderCars();
+}

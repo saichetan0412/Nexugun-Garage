@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nexugun's Digital Car Collection</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -65,71 +66,8 @@
       <div class="header-lamborghini animate-header">
         <h1>LAMBORGHINI</h1>
         <img src="Images/Logo/lamborghini-logo.png" class="brand-logo" data-title="Lamborghini" data-description="Founded by Ferruccio Lamborghini" data-image="Images/Ferruccio.jpg" alt="Lamborghini Logo"/>
-     </div>
-      <!-- Car Gallery: Lamborghini -->
-      <section class="car-gallery brand-section">
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2026" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$500,000">
-          <h2>Lamborghini Temerario</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Temerario.jpg" alt="Lamborghini Temerario" />
-          <h3>2026 - "Authentic Fuoriclasse"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2024" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$600,000">
-          <h2> Lamborghini Revuelto</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Revuelto.jpg" alt="Lamborghini Revuelto" />
-          <h3>2024 - "From Now On"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2024" data-engine="4.0L V8" data-topspeed="305 km/h" data-price="$250,000">
-          <h2> Lamborghini Urus</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Urus.jpg" alt="Lamborghini Urus" />
-          <h3>2024 - "Unlock Any Road"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2024" data-engine="5.2L V10" data-topspeed="325 km/h" data-price="$300,000">
-          <h2>Lamborghini Huracán</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Huracan.jpg" alt="Lamborghini Huracán" />
-          <h3>2024 – "Every Day Amplified"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2019" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$400,000">
-          <h2>Lamborghini Aventador</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Aventador.jpg" alt="Lamborghini Aventador" />
-          <h3>2019 – "Designed To Push Beyond Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2019" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$450,000">
-          <h2>Lamborghini Sian</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Sian.jpg" alt="Lamborghini Sian" />
-          <h3>2019 – "An Icon"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2016" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$700,000">
-          <h2>Lamborghini Centenario</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Centenario.jpg" alt="Lamborghini Centenario" />
-          <h3>2016 – "Tribute to the Future"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2013" data-engine="5.2L V10" data-topspeed="325 km/h" data-price="$250,000">
-          <h2>Lamborghini Egoista</h2>
-          <img src= "Images/Lamborghini/lamborghini-egoista.jpg" alt="Lamborghini Egoista" />
-          <h3>2013 – "A Car for Itself"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2003" data-engine="5.0L V10" data-topspeed="320 km/h" data-price="$200,000">
-          <h2>Lamborghini Gallardo</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Gallardo.jpg" alt="Lamborghini Gallardo" />
-          <h3>2003 – "Expect The Unexpected"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="2001" data-engine="6.5L V12" data-topspeed="340 km/h" data-price="$350,000">
-          <h2>Lamborghini Murciélago</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Murciélago.jpg" alt="Lamborghini Murciélago" />
-          <h3>2001 – "Not just a car, but a statement"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="1999" data-engine="5.7L V12" data-topspeed="320 km/h" data-price="$300,000">
-          <h2>Lamborghini Diablo</h2>
-          <img src= "Images/Lamborghini/Lamborghini_Diablo.jpeg" alt="Lamborghini Diablo" />
-          <h3>1999 – "The Legend Lives On"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Lamborghini" data-year="1999" data-engine="5.2L V10" data-topspeed="320 km/h" data-price="$250,000">
-          <h2>Lamborghini Countach</h2>
-          <img src= "Images/Lamborghini/Lamborghini-Countach.jpg" alt="Lamborghini Countach" />
-          <h3>1999 – "The Iconic Supercar"</h3>
-        </div>
-        <!-- Add more car cards here -->
-      </section>
+      </div>
+      <section class="car-gallery brand-section" data-brand="Lamborghini"> </section>
     </div>
     <!-- Bugatti Header -->
     <div class="brand-block" data-brand="Bugatti">
@@ -137,65 +75,7 @@
         <h1>BUGATTI</h1>
         <img src="Images/Logo/Bugatti-logo.jpg" class="brand-logo" data-title="Bugatti" data-description="Founded by cEttore Bugatti" data-image="Images/Ettore" alt="Bugatti Logo"/>
       </div>
-      <!-- Car Gallery: Bugatti -->
-      <section class="car-gallery brand-section">
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2019" data-engine="8.0L W16" data-topspeed="420 km/h" data-price="$9,000,000">
-          <h2>Bugatti Centodieci</h2>
-          <img src= "Images/Bugatti/Bugatti_Centodieci.jpg" alt="Bugatti Centodieci" />
-          <h3>2019 – "Reminiscence Of An Icon"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2018" data-engine="8.0L W16" data-topspeed="380 km/h" data-price="$5,000,000">
-          <h2>Bugatti Divo</h2>
-          <img src="Images/Bugatti/Bugatti_Divo.jpg" alt="Bugatti Divo" />
-          <h3>2018 – "Modern coachbuilding at its best"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2016" data-engine="8.0L W16" data-topspeed="420 km/h" data-price="$3,000,000">
-          <h2>Bugatti Chiron</h2>
-          <img src="Images/Bugatti/Bugatti_Chiron" alt="Bugatti Chiron" />
-          <h3>2016 – "Breaking new dimensions"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2019" data-engine="8.0L W16" data-topspeed="420 km/h" data-price="$18,000,000">
-          <h2>Bugatti La Voiture Noire</h2>
-          <img src="Images/Bugatti/Bugatti_La_Voiture_Noire.jpg" alt="Bugatti La Voiture Noire" />
-          <h3>2019 – "The ultimate GT"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2010" data-engine="8.0L W16" data-topspeed="431 km/h" data-price="$2,500,000">
-          <h2>Bugatti Veyron Super Sport</h2>
-          <img src="Images/Bugatti/Bugatti_Veyron.jpg" alt="Bugatti Veyron Super Sport" />
-          <h3>2010 – "World's fastest production car"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2016" data-engine="8.0L W16" data-topspeed="420 km/h" data-price="$3,500,000">
-          <h2>Bugatti Vision Gran Turismo</h2>
-          <img src="Images/Bugatti/Bugatti-Vision-Gran-Turismo" alt="Bugatti Vision Gran Turismo" />
-          <h3>2016 – "Virtual to reality"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="2022" data-engine="8.0L W16" data-topspeed="420 km/h" data-price="$4,000,000">
-          <h2>Bugatti Mistral</h2>
-          <img src="Images/Bugatti/Bugatti_Mistral.jpg" alt="Bugatti Mistral" />
-          <h3>2022 – "The ultimate roadster"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="1994" data-engine="3.5L V12" data-topspeed="355 km/h" data-price="$1,000,000">
-          <h2>Bugatti EB110 SS</h2>
-          <img src="Images/Bugatti/Bugatti_EB110_SS.jpeg" alt="Bugatti EB110 SS" />
-          <h3>1994 – "Super Sport Legend"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="1991" data-engine="3.5L V12" data-topspeed="350 km/h" data-price="$1,500,000">
-          <h2>Bugatti EB110 GT</h2>
-          <img src="Images/Bugatti/Bugatti_EB110_GT" alt="Bugatti EB110 GT" />
-          <h3>1991 – "Revival of the Brand"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="1939" data-engine="3.3L Inline-8" data-topspeed="200 km/h" data-price="$4,000,000">
-          <h2>Bugatti Type 57C Atlantic</h2>
-          <img src="Images/Bugatti/Bugatti_Type57SC_Atlantic" alt="Bugatti Type 57C Atlantic" />
-          <h3>1939 – "Art Deco Icon"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Bugatti" data-year="1927" data-engine="2.0L Inline-8" data-topspeed="200 km/h" data-price="$1,000,000">
-          <h2>Bugatti Type 35</h2>
-          <img src="Images/Bugatti/Bugatti_Type_35" alt="Bugatti Type 35" />
-          <h3>1927 – "Grand Prix Champion"</h3>
-        </div>
-        <!-- Add more Bugatti cars here -->
-      </section>
+      <section class="car-gallery brand-section" data-brand="Bugatti"> </section>
     </div>
     <!-- Ferrari Header -->
     <div class="brand-block" data-brand="Ferrari">
@@ -203,70 +83,7 @@
         <h1>FERRARI</h1>
         <img src="Images/Logo/ferrari-logo.jpg" class="brand-logo" data-title="Ferrari" data-description="Founded by Enzo Ferrari" data-image="Images/Enzo" alt="Ferrari Logo"/>
       </div>
-      <!-- Car Gallery: Ferrari -->
-      <section class="car-gallery brand-section">
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2026" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$700,000">
-          <h2>Ferrari Purosangue</h2>
-          <img src= "Images/Ferrari/Ferrari_Purosangue.jpg" alt="Ferrari Purosangue"/>
-          <h3>2026 – "The First Four Door Ferrari"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2024" data-engine="4.0L V8" data-topspeed="340 km/h" data-price="$350,000">
-          <h2>Ferrari SF90 Stradale</h2>
-          <img src= "Images/Ferrari/Ferrari_SF90_Stradale" alt="Ferrari SF90 Stradale" />
-          <h3>2024 – "The Pinnacle of Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2024" data-engine="3.9L V8" data-topspeed="330 km/h" data-price="$300,000">
-          <h2>Ferrari F8 Tributo</h2>
-          <img src= "Images/Ferrari/Ferrari_F8_Tributo.jpg" alt="Ferrari F8 Tributo" />
-          <h3>2019 – "A celebration of excellence"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2023" data-engine="3.9L V8" data-topspeed="340 km/h" data-price="$400,000">
-          <h2>Ferrari 296 GTB</h2>
-          <img src= "Images/Ferrari/Ferrari_296_GTB.jpg" alt="Ferrari 296 GTB" />
-          <h3>2023 – "The Future of Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2022" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$800,000">
-          <h2>Ferrari 812 Competizione</h2>
-          <img src= "Images/Ferrari/Ferrari-Competizione.jpg" alt="Ferrari 812 Competizione" />
-          <h3>2022 – "The Ultimate V12 Experience"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2021" data-engine="3.9L V8" data-topspeed="340 km/h" data-price="$350,000">
-          <h2>Ferrari Roma</h2>
-          <img src= "Images/Ferrari/Ferrari_Roma.jpg" alt="Ferrari Roma" />
-          <h3>2021 – "Elegance Meets Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2020" data-engine="3.9L V8" data-topspeed="340 km/h" data-price="$300,000">
-          <h2>Ferrari F8 Spider</h2>
-          <img src="Images/Ferrari/Ferrari_F8_Spider.jpg" alt="Ferrari F8 Spider" />
-          <h3>2020 – "Open Air Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2019" data-engine="6.5L V12" data-topspeed="350 km/h" data-price="$600,000">
-          <h2>Ferrari Monza SP2</h2>
-          <img src="Images/Ferrari/ferrari_Monza_SP2" alt="Ferrari Monza SP2" />
-          <h3>2019 – "Icona Series Speedster"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2017" data-engine="6.3L V12" data-topspeed="340 km/h" data-price="$700,000">
-          <h2>Ferrari 812 Superfast</h2>
-          <img src="Images/Ferrari/Ferrari_812_Superfast.jpg" alt="Ferrari 812 Superfast" />
-          <h3>2017 – "The Most Powerful V12"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2015" data-engine="3.9L V8" data-topspeed="330 km/h" data-price="$350,000">
-          <h2>Ferrari 488 GTB</h2>
-          <img src="Images/Ferrari/Ferrari-488-GTB" alt="Ferrari 488 GTB" />
-          <h3>2015 – "Turbocharged Excellence"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2013" data-engine="6.3L V8" data-topspeed="340 km/h" data-price="$400,000">
-          <h2>Ferrari LaFerrari</h2>
-          <img src="Images/Ferrari/Ferrari_LaFerrari.webp" alt="Ferrari LaFerrari" />
-          <h3>2013 – "Hybrid Hypercar"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Ferrari" data-year="2012" data-engine="6.3L V12" data-topspeed="340 km/h" data-price="$500,000">
-          <h2>Ferrari F12berlinetta</h2>
-          <img src="Images/Ferrari/Ferrari_F12_Berlinetta.webp" alt="Ferrari F12berlinetta" />
-          <h3>2012 – "V12 Grand Tourer"</h3>
-        </div>
-        <!-- Add more Ferrari cars here -->
-      </section>
+      <section class="car-gallery brand-section" data-brand="Ferrari"> </section>
     </div>
     <!-- Porsche Header -->
     <div class="brand-block" data-brand="Porsche">
@@ -274,70 +91,7 @@
         <h1>PORSCHE</h1>
         <img src="Images/Logo/Porsche-logo" class="brand-logo" data-title="Porsche" data-description="Founded by Ferdinand Porsche" data-image="Images/Ferdinand.jpeg" alt="Porsche Logo"/>
       </div>
-      <!-- Car Gallery: Porsche -->
-      <section class="car-gallery brand-section">
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2024" data-engine="4.0L Flat-6" data-topspeed="320 km/h" data-price="$200,000">
-          <h2>Porsche 911 GT3</h2>
-          <img src= "Images/Porsche/Porsche_911_GT3.jpg" alt="Porsche 911 GT3" />
-          <h3>2024 – "The Ultimate Track Machine"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2023" data-engine="Electric" data-topspeed="250 km/h" data-price="$150,000">
-          <h2>Porsche Taycan</h2>
-          <img src= "Images/Porsche/Porsche_Taycan.jpg" alt="Porsche Taycan" />
-          <h3>2023 – "Electric Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2022" data-engine="3.0L Flat-6" data-topspeed="300 km/h" data-price="$120,000">
-          <h2>Porsche Macan</h2>
-          <img src= "Images/Porsche/Porsche_Macan.jpg" alt="Porsche Macan" />
-          <h3>2022 – "Compact Luxury SUV"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2021" data-engine="4.0L Flat-6" data-topspeed="320 km/h" data-price="$250,000">
-          <h2>Porsche Cayenne</h2>
-          <img src= "Images/Porsche/Porsche_Cayenne.jpg" alt="Porsche Cayenne" />
-          <h3>2021 – "Luxury Meets Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2020" data-engine="2.5L Flat-4" data-topspeed="280 km/h" data-price="$100,000">
-          <h2>Porsche 718 Cayman</h2>
-          <img src= "Images/Porsche/Porsche_718_Cayman.jpg" alt="Porsche 718 Cayman" />
-          <h3>2020 – "Pure Driving Pleasure"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2019" data-engine="3.0L Flat-6" data-topspeed="300 km/h" data-price="$180,000">
-          <h2>Porsche Panamera</h2>
-          <img src= "Images/Porsche/Porsche_Panamera.jpg" alt="Porsche Panamera" />
-          <h3>2019 – "Luxury Sports Sedan"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2018" data-engine="3.0L Flat-6" data-topspeed="290 km/h" data-price="$220,000">
-          <h2>Porsche 911 Carrera</h2>
-          <img src= "Images/Porsche/Porsche_911_Carrera.jpg" alt="Porsche 911 Carrera" />
-          <h3>2018 – "Timeless Icon"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2017" data-engine="4.0L Flat-6" data-topspeed="310 km/h" data-price="$300,000">
-          <h2>Porsche 918 Spyder</h2>
-          <img src= "Images/Porsche/Porsche_918_Spyder.jpg" alt="Porsche 918 Spyder" />
-          <h3>2017 – "Hybrid Hypercar"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2016" data-engine="3.8L Flat-6" data-topspeed="320 km/h" data-price="$350,000">
-          <h2>Porsche 911 Turbo S</h2>
-          <img src= "Images/Porsche/Porsche-911_Turbo_S.jpg" alt="Porsche 911 Turbo S" />
-          <h3>2016 – "Unmatched Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2015" data-engine="3.4L Flat-6" data-topspeed="290 km/h" data-price="$150,000">
-          <h2>Porsche Boxster</h2>
-          <img src= "Images/Porsche/Porsche_Boxster.jpg" alt="Porsche Boxster" />
-          <h3>2015 – "Open-Top Sports Car"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2014" data-engine="4.0L Flat-6" data-topspeed="330 km/h" data-price="$400,000">
-          <h2>Porsche 911 GT3 RS</h2>
-          <img src= "Images/Porsche/Porsche_911_GT3_RS.jpg" alt="Porsche 911 GT3 RS" />
-          <h3>2014 – "Track-Focused Performance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="Porsche" data-year="2013" data-engine="3.8L Flat-6" data-topspeed="300 km/h" data-price="$250,000">
-          <h2>Porsche 911 Carrera S</h2>
-          <img src= "Images/Porsche/Porsche_911_Carrera_S.jpg" alt="Porsche 911 Carrera S" />
-          <h3>2013 – "The Essence of Porsche"</h3>
-        </div>
-        <!-- Add more Porsche cars here -->
-      </section>
+      <section class="car-gallery brand-section" data-brand="Porsche"> </section>
     </div>
     <!-- Rolls Royce Header -->
     <div class="brand-block" data-brand="RollsRoyce">
@@ -345,100 +99,7 @@
         <h1>ROLLS ROYCE</h1>
         <img src="Images/Logo/RollsRoyce-logo.jpg" class="brand-logo" data-title="Rolls Royce" data-description="Founded by Charles Rolls and Henry Royce" data-image="Images/Henry-Royce.jpg" alt="Rolls Royce Logo"/>
       </div>
-      <!-- Car Gallery: Rolls Royce -->
-      <section class="car-gallery brand-section">
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2024" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$450,000">
-          <h2>Rolls Royce Spectre</h2>
-          <img src= "Images/Rolls-Royce/Rolls-Royce_Spectre.jpg" alt="Rolls Royce Spectre" />
-          <h3>2024 – "The Electric Luxury"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2023" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$500,000">
-          <h2>Rolls Royce Ghost</h2>
-          <img src= "Images/Rolls-Royce/Rolls-Royce_Ghost.jpg" alt="Rolls Royce Ghost" />
-          <h3>2023 – "The Pinnacle of Luxury"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2022" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$600,000">
-          <h2>Rolls Royce Cullinan</h2>
-          <img src= "Images/Rolls-Royce/Rolls-Royce_Cullinan.jpg" alt="Rolls Royce Cullinan" />
-          <h3>2022 – "The Ultimate SUV"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2021" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$700,000">
-          <h2>Rolls Royce Dawn</h2>
-          <img src= "Images/Rolls-Royce/Rolls-Royce_Dawn.jpg" alt="Rolls Royce Dawn" />
-          <h3>2021 – "The Open-Air Luxury"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2020" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$800,000">
-          <h2>Rolls Royce Wraith</h2>
-          <img src= "Images/Rolls-Royce/Rolls-Royce_Wraith.jpg" alt="Rolls Royce Wraith" />
-          <h3>2020 – "The Grand Tourer"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2019" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$900,000">
-          <h2>Rolls Royce Phantom</h2>
-          <img src= "Images/Rolls-Royce/Rolls-Royce_Phantom.jpg" alt="Rolls Royce Phantom" />
-          <h3>2019 – "The Ultimate Luxury Sedan"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2018" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$1,000,000">
-          <h2>Rolls Royce Silver Dawn</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Dawn.jpg" alt="Rolls Royce Silver Dawn" />
-          <h3>2018 – "The Classic Elegance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2017" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$1,200,000">
-          <h2>Rolls Royce Silver Cloud</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Cloud.jpg" alt="Rolls Royce Silver Cloud" />
-          <h3>2017 – "The Timeless Classic"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2016" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$1,500,000">
-          <h2>Rolls Royce Silver Spirit</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Spirit.jpg" alt="Rolls Royce Silver Spirit" />
-          <h3>2016 – "The Luxury Sedan"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2015" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$1,800,000">
-          <h2>Rolls Royce Silver Shadow</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Shadow.jpg" alt="Rolls Royce Silver Shadow" />
-          <h3>2015 – "The Classic Luxury"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2014" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$2,000,000">
-          <h2>Rolls Royce Silver Seraph</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Seraph.jpg" alt="Rolls Royce Silver Seraph" />
-          <h3>2014 – "The Modern Classic"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2013" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$2,500,000">
-          <h2>Rolls Royce Corniche</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Corniche.jpg" alt="Rolls Royce Corniche" />
-          <h3>2013 – "The Convertible Luxury"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2012" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$3,000,000">
-          <h2>Rolls Royce Phantom Drophead Coupe</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Phantom_Drophead_Coupe.jpg" alt="Rolls Royce Phantom Drophead Coupe" />
-          <h3>2012 – "The Open-Air Luxury"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2011" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$3,500,000">
-          <h2>Rolls Royce Phantom Coupe</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Phantom_Coupe.jpg" alt="Rolls Royce Phantom Coupe" />
-          <h3>2011 – "The Grand Tourer"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2010" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$4,000,000">
-          <h2>Rolls Royce Phantom</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Phantom.jpg" alt="Rolls Royce Phantom" />
-          <h3>2010 – "The Ultimate Luxury Sedan"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2009" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$4,500,000">
-          <h2>Rolls Royce Silver Ghost</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Ghost.jpg" alt="Rolls Royce Silver Ghost" />
-          <h3>2009 – "The Original Luxury Car"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2008" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$5,000,000">
-          <h2>Rolls Royce Silver Dawn</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Dawn.jpg" alt="Rolls Royce Silver Dawn" />
-          <h3>2008 – "The Classic Elegance"</h3>
-        </div>
-        <div class="car-card animate-car" data-brand="RollsRoyce" data-year="2007" data-engine="6.75L V12" data-topspeed="250 km/h" data-price="$5,500,000">
-          <h2>Rolls Royce Silver Cloud</h2>
-          <img src= "Images/RollsRoyce/Rolls_Royce_Silver_Cloud.jpg" alt="Rolls Royce Silver Cloud" />
-          <h3>2007 – "The Timeless Classic"</h3>
-        </div>
-        <!-- Add more Rolls Royce cars here -->
-      </section>
+      <section class="car-gallery brand-section" data-brand="RollsRoyce"> </section>
     </div>
     <!-- Modal Structure -->
     <div id="logoModal" class="logo-modal">

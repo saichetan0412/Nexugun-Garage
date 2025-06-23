@@ -1,13 +1,63 @@
-Brand,Name,Year,Description,ImagePath
-Lamborghini,Lamborghini Centenario,2016,"Tribute to the Future",Images/Lamborghini_Centenario.jpg
-Bugatti,Bugatti Centodieci,2019,"Reminiscence Of An Icon",Images/Bugatti_Centodieci.jpg
-Lamborghini,Lamborghini Temerario,2026,"Authentic Fuoriclasse",Images/Lamborghini_Temerario.jpg
-Lamborghini,Lamborghini Revuelto,2024,"From Now On",Images/Lamborghini_Revuelto.jpg
-Lamborghini,Lamborghini Urus,2024,"Unlock Any Road",Images/Lamborghini_Urus.jpg
-Lamborghini,Lamborghini Huracán,2024,"Every Day Amplified",Images/Lamborghini_Huracan.jpg
-Lamborghini,Lamborghini Aventador,2019,"Designed To Push Beyond Performance",Images/Lamborghini_Aventador.jpg
-Lamborghini,Lamborghini Sian,2019,"An Icon",Images/Lamborghini_Sian.jpg
-Lamborghini,Lamborghini Egoista,2013,"A Car for Itself",Images/lamborghini-egoista.jpg
-Lamborghini,Lamborghini Gallardo,2003,"Expect The Unexpected",Images/Lamborghini_Gallardo.jpg
-Lamborghini,Lamborghini Murciélago,2001,"Not just a car, but a statement",Images/Lamborghini_Murciélago.jpg
-Bugatti,Bugatti Divo,2018,"Modern coachbuilding at its best",Images/Bugatti_Divo.jpg
+BRAND,CAR MODEL,YEAR,DESCRIPTION,IMAGE PATH,ENGINE,TOP SPEED,PRICE
+Lamborghini,Lamborghini Temerario,2026,"""Authentic Fuoriclasse""",Images/Lamborghini/Lamborghini_Temerario.jpg,6.5L V12,350 km/h,"$500,000.00"
+Lamborghini,Lamborghini Revuelto,2024,"""From Now On""",Images/Lamborghini/Lamborghini_Revuelto.jpg,6.5L V12,350 km/h,"$600,000.00"
+Lamborghini,Lamborghini Urus,2024,"""Unlock Any Road""",Images/Lamborghini/Lamborghini_Urus.jpg,4.0L V8,305 km/h,"$250,000.00"
+Lamborghini,Lamborghini Huracan,2024,"""Every Day Amplified""",Images/Lamborghini/Lamborghini_Huracan.jpg,5.2L V10,325 km/h,"$300,000.00"
+Lamborghini,Lamborghini Aventador,2019,"""Designed To Push Beyond Performance""",Images/Lamborghini/Lamborghini_Aventador.jpg,6.5L V12,350 km/h,"$400,000.00"
+Lamborghini,Lamborghini Sian,2019,"""An Icon""",Images/Lamborghini/Lamborghini_Sian.jpg,6.5L V12,350 km/h,"$450,000.00"
+Lamborghini,Lamborghini Centenario,2016,"""Tribute to the Future""",Images/Lamborghini/Lamborghini_Centenario.jpg,6.5L V12,350 km/h,"$700,000.00"
+Lamborghini,Lamborghini Egoista,2013,"""A Car for Itself""",Images/Lamborghini/Lamborghini_Egoista.jpg,5.2L V10,325 km/h,"$250,000.00"
+Lamborghini,Lamborghini Gallardo,2003,"""Expect The Unexpected""",Images/Lamborghini/Lamborghini_Gallardo.jpg,5.0L V10,320 km/h,"$200,000.00"
+Lamborghini,Lamborghini Murcielago,2001,"""Not just a car, but a statement""",Images/Lamborghini/Lamborghini_Murcielago.jpg,6.5L V12,340 km/h,"$350,000.00"
+Lamborghini,Lamborghini Diablo,1999,"""The Legend Lives On""",Images/Lamborghini/Lamborghini_Diablo.jpeg,5.7L V12,320 km/h,"$300,000.00"
+Lamborghini,Lamborghini Countach,1999,"""The Iconic Supercar""",Images/Lamborghini/Lamborghini_Countach.jpg,5.2L V10,320 km/h,"$250,000.00"
+Bugatti,Bugatti Centodieci,2019,"""Reminiscence Of An Icon""",Images/Bugatti/Bugatti_Centodieci.jpg,8.0L W16,420 km/h,"$9,000,000.00"
+Bugatti,Bugatti Divo,2018,"""Modern coachbuilding at its best""",Images/Bugatti/Bugatti_Divo.jpg,8.0L W16,380 km/h,"$5,000,000.00"
+Bugatti,Bugatti Chiron,2016,"""Breaking new dimensions""",Images/Bugatti/Bugatti_Chiron.jpg,8.0L W16,420 km/h,"$3,000,000.00"
+Bugatti,Bugatti La Voiture Noire,2019,"""The ultimate GT""",Images/Bugatti/Bugatti_La Voiture Noire.jpg,8.0L W16,420 km/h,"$18,000,000.00"
+Bugatti,Bugatti Veyron Super Sport,2010,"""World's fastest production car""",Images/Bugatti/Bugatti_Veyron Super Sport.jpg,8.0L W16,431 km/h,"$2,500,000.00"
+Bugatti,Bugatti Vision Gran Turismo,2016,"""Virtual to reality""",Images/Bugatti/Bugatti_Vision Gran Turismo.jpg,8.0L W16,420 km/h,"$3,500,000.00"
+Bugatti,Bugatti Mistral,2022,"""The ultimate roadster""",Images/Bugatti/Bugatti_Mistral.jpg,8.0L W16,420 km/h,"$4,000,000.00"
+Bugatti,Bugatti EB110 SS,1994,"""Super Sport Legend""",Images/Bugatti/Bugatti_EB110 SS.jpg,3.5L V12,355 km/h,"$1,000,000.00"
+Bugatti,Bugatti EB110 GT,1991,"""Revival of the Brand""",Images/Bugatti/Bugatti_EB110 GT.jpg,3.5L V12,350 km/h,"$1,500,000.00"
+Bugatti,Bugatti Type 57C Atlantic,1939,"""Art Deco Icon""",Images/Bugatti/Bugatti_Type 57C Atlantic.jpg,3.3L Inline-8,200 km/h,"$4,000,000.00"
+Bugatti,Bugatti Type 35,1927,"""Grand Prix Champion""",Images/Bugatti/Bugatti_Type 35.jpg,2.0L Inline-8,200 km/h,"$1,000,000.00"
+Ferrari,Ferrari Purosangue,2026,"""The First Four Door Ferrari""",Images/Ferrari/Ferrari_Purosangue.jpg,6.5L V12,350 km/h,"$700,000.00"
+Ferrari,Ferrari SF90 Stradale,2024,"""The Pinnacle of Performance""",Images/Ferrari/Ferrari_SF90 Stradale.jpg,4.0L V8,340 km/h,"$350,000.00"
+Ferrari,Ferrari F8 Tributo,2019,"""A celebration of excellence""",Images/Ferrari/Ferrari_F8 Tributo.jpg,3.9L V8,330 km/h,"$300,000.00"
+Ferrari,Ferrari 296 GTB,2023,"""The Future of Performance""",Images/Ferrari/Ferrari_296 GTB.jpg,3.9L V8,340 km/h,"$400,000.00"
+Ferrari,Ferrari 812 Competizione,2022,"""The Ultimate V12 Experience""",Images/Ferrari/Ferrari_812 Competizione.jpg,6.5L V12,350 km/h,"$800,000.00"
+Ferrari,Ferrari Roma,2021,"""Elegance Meets Performance""",Images/Ferrari/Ferrari_Roma.jpg,3.9L V8,340 km/h,"$350,000.00"
+Ferrari,Ferrari F8 Spider,2020,"""Open Air Performance""",Images/Ferrari/Ferrari_F8 Spider.jpg,3.9L V8,340 km/h,"$300,000.00"
+Ferrari,Ferrari Monza SP2,2019,"""Icon a Series Speedster""",Images/Ferrari/Ferrari_Monza SP2.jpg,6.5L V12,350 km/h,"$600,000.00"
+Ferrari,Ferrari 812 Superfast,2017,"""The Most Powerful V12""",Images/Ferrari/Ferrari_812 Superfast.jpg,6.3L V12,340 km/h,"$700,000.00"
+Ferrari,Ferrari 488 GTB,2015,"""Turbocharged Excellence""",Images/Ferrari/Ferrari_488 GTB.jpg,3.9L V8,330 km/h,"$350,000.00"
+Ferrari,Ferrari LaFerrari,2013,"""Hybrid Hypercar""",Images/Ferrari/Ferrari_LaFerrari.jpg,6.3L V8,340 km/h,"$400,000.00"
+Ferrari,Ferrari F12berlinetta,2012,"""V12 Grand Tourer""",Images/Ferrari/Ferrari_F12berlinetta.jpg,6.3L V12,340 km/h,"$500,000.00"
+Porsche,Porsche 911 GT3,2024,"""The Ultimate Track Machine""",Images/Porsche/Porsche_911 GT3.jpg,4.0L Flat-6,320 km/h,"$200,000.00"
+Porsche,Porsche Taycan,2023,"""Electric Performance""",Images/Porsche/Porsche_Taycan.jpg,Electric,250 km/h,"$150,000.00"
+Porsche,Porsche Macan,2022,"""Compact Luxury SUV""",Images/Porsche/Porsche_Macan.jpg,3.0L Flat-6,300 km/h,"$120,000.00"
+Porsche,Porsche Cayenne,2021,"""Luxury Meets Performance""",Images/Porsche/Porsche_Cayenne.jpg,4.0L Flat-6,320 km/h,"$250,000.00"
+Porsche,Porsche 718 Cayman,2020,"""Pure Driving Pleasure""",Images/Porsche/Porsche_718 Cayman.jpg,2.5L Flat-4,280 km/h,"$100,000.00"
+Porsche,Porsche Panamera,2019,"""Luxury Sports Sedan""",Images/Porsche/Porsche_Panamera.jpg,3.0L Flat-6,300 km/h,"$180,000.00"
+Porsche,Porsche 911 Carrera,2018,"""Timeless Icon""",Images/Porsche/Porsche_911 Carrera.jpg,3.0L Flat-6,290 km/h,"$220,000.00"
+Porsche,Porsche 918 Spyder,2017,"""Hybrid Hypercar""",Images/Porsche/Porsche_918 Spyder.jpg,4.0L Flat-6,310 km/h,"$300,000.00"
+Porsche,Porsche 911 Turbo S,2016,"""Unmatched Performance""",Images/Porsche/Porsche_911 Turbo S.jpg,3.8L Flat-6,320 km/h,"$350,000.00"
+Porsche,Porsche Boxster,2015,"""Open-Top Sports Car""",Images/Porsche/Porsche_Boxster.jpg,3.4L Flat-6,290 km/h,"$150,000.00"
+Porsche,Porsche 911 GT3 RS,2014,"""Track-Focused Performance""",Images/Porsche/Porsche_911 GT3 RS.jpg,4.0L Flat-6,330 km/h,"$400,000.00"
+Porsche,Porsche 911 Carrera S,2013,"""The Essence of Porsche""",Images/Porsche/Porsche_911 Carrera S.jpg,3.8L Flat-6,300 km/h,"$250,000.00"
+RollsRoyce,Rolls Royce Spectre,2024,"""The Electric Luxury""",Images/RollsRoyce/RollsRoyce_Royce Spectre.jpg,6.75L V12,250 km/h,"$450,000.00"
+RollsRoyce,Rolls Royce Ghost,2023,"""The Pinnacle of Luxury""",Images/RollsRoyce/RollsRoyce_Royce Ghost.jpg,6.75L V12,250 km/h,"$500,000.00"
+RollsRoyce,Rolls Royce Cullinan,2022,"""The Ultimate SUV""",Images/RollsRoyce/RollsRoyce_Royce Cullinan.jpg,6.75L V12,250 km/h,"$600,000.00"
+RollsRoyce,Rolls Royce Dawn,2021,"""The Open-Air Luxury""",Images/RollsRoyce/RollsRoyce_Royce Dawn.jpg,6.75L V12,250 km/h,"$700,000.00"
+RollsRoyce,Rolls Royce Wraith,2020,"""The Grand Tourer""",Images/RollsRoyce/RollsRoyce_Royce Wraith.jpg,6.75L V12,250 km/h,"$800,000.00"
+RollsRoyce,Rolls Royce Phantom,2019,"""The Ultimate Luxury Sedan""",Images/RollsRoyce/RollsRoyce_Royce Phantom.jpg,6.75L V12,250 km/h,"$900,000.00"
+RollsRoyce,Rolls Royce Silver Dawn,2018,"""The Classic Elegance""",Images/RollsRoyce/RollsRoyce_Royce Silver Dawn.jpg,6.75L V12,250 km/h,"$1,000,000.00"
+RollsRoyce,Rolls Royce Silver Cloud,2017,"""The Timeless Classic""",Images/RollsRoyce/RollsRoyce_Royce Silver Cloud.jpg,6.75L V12,250 km/h,"$1,200,000.00"
+RollsRoyce,Rolls Royce Silver Spirit,2016,"""The Luxury Sedan""",Images/RollsRoyce/RollsRoyce_Royce Silver Spirit.jpg,6.75L V12,250 km/h,"$1,500,000.00"
+RollsRoyce,Rolls Royce Silver Shadow,2015,"""The Classic Luxury""",Images/RollsRoyce/RollsRoyce_Royce Silver Shadow.jpg,6.75L V12,250 km/h,"$1,800,000.00"
+RollsRoyce,Rolls Royce Silver Seraph,2014,"""The Modern Classic""",Images/RollsRoyce/RollsRoyce_Royce Silver Seraph.jpg,6.75L V12,250 km/h,"$2,000,000.00"
+RollsRoyce,Rolls Royce Corniche,2013,"""The Convertible Luxury""",Images/RollsRoyce/RollsRoyce_Royce Corniche.jpg,6.75L V12,250 km/h,"$2,500,000.00"
+RollsRoyce,Rolls Royce Phantom Drophead Coupe,2012,"""The Open-Air Luxury""",Images/RollsRoyce/RollsRoyce_Royce Phantom Drophead Coupe.jpg,6.75L V12,250 km/h,"$3,000,000.00"
+RollsRoyce,Rolls Royce Phantom Coupe,2011,"""The Grand Tourer""",Images/RollsRoyce/RollsRoyce_Royce Phantom Coupe.jpg,6.75L V12,250 km/h,"$3,500,000.00"
+RollsRoyce,Rolls Royce Silver Ghost,2009,"""The Original Luxury Car""",Images/RollsRoyce/RollsRoyce_Royce Silver Ghost.jpg,6.75L V12,250 km/h,"$4,500,000.00"
