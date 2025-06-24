@@ -164,8 +164,7 @@ body {
 }
 
 /* Input and Select styles */
-.search-container input,
-.search-container select {
+.search-container input{
   padding: 0.7rem 1rem;
   font-size: 1rem;
   border: 2px solid #000;
@@ -175,14 +174,47 @@ body {
 #searchInput {
   width: 300px;
 }
-#brandFilter,
+
 #sortFilter {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   width: 180px;
+  background: #fff;
 }
 @media (max-width: 600px) {
   .search-container {
     flex-direction: column;
   }
+}
+
+/* Alphabetical Sort Button */
+#alphaSortBtn {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  background: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+#alphaSortBtn:hover, #alphaSortBtn:focus {
+  background: #0dc406;
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(13,196,6,0.18);
+}
+
+#alphaSortBtn:active {
+  background: #18d606;
+  color: #fff;
+  transform: scale(0.98);
 }
 
 /* Lightbox Styles */

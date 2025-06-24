@@ -20,51 +20,25 @@ function animateCars() {
 function searchCars() {
   const query = $('#searchInput')?.value.trim().toLowerCase() || '';
   const carCards = $all('.car-card');
-  const brandBlocks = $all('.brand-block');
-  if (query === '') {
-    carCards.forEach(card => card.style.display = 'block');
-    brandBlocks.forEach(block => block.style.display = 'block');
-    return;
-  }
   if (query.length < 3) {
-    carCards.forEach(card => card.style.display = 'none');
-    brandBlocks.forEach(block => block.style.display = 'none');
+    // Show all cars if less than 3 characters
+    carCards.forEach(card => card.style.display = 'block');
+    $all('.brand-block').forEach(block => block.style.display = 'block');
     return;
   }
-  const matchedBrands = new Set();
+  let anyVisible = false;
   carCards.forEach(card => {
     const carName = card.querySelector('h2')?.textContent.toLowerCase() || '';
     const isMatch = carName.includes(query);
     card.style.display = isMatch ? 'block' : 'none';
-    if (isMatch) {
-      const brand = card.getAttribute('data-brand');
-      if (brand) matchedBrands.add(brand);
-    }
+    if (isMatch) anyVisible = true;
   });
-  brandBlocks.forEach(block => {
-    const brand = block.getAttribute('data-brand');
-    block.style.display = matchedBrands.has(brand) ? 'block' : 'none';
+  // Hide brand blocks with no visible cars
+  $all('.brand-block').forEach(block => {
+    const gallery = block.querySelector('.car-gallery');
+    const visible = Array.from(gallery.children).some(card => card.style.display !== 'none');
+    block.style.display = visible ? 'block' : 'none';
   });
-}
-
-// --- Car Search By Brand ---
-function filterByBrand() {
-  const brand = $('#brandFilter')?.value || 'All';
-  const carCards = $all('.car-card');
-  const brandBlocks = $all('.brand-block');
-  if (brand === 'All') {
-    carCards.forEach(card => card.style.display = 'block');
-    brandBlocks.forEach(block => block.style.display = 'block');
-  } else {
-    carCards.forEach(card => {
-      const cardBrand = card.getAttribute('data-brand');
-      card.style.display = cardBrand === brand ? 'block' : 'none';
-    });
-    brandBlocks.forEach(block => {
-      const blockBrand = block.getAttribute('data-brand');
-      block.style.display = blockBrand === brand ? 'block' : 'none';
-    });
-  }
 }
 
 // --- Car Year Filter ---
@@ -131,25 +105,22 @@ function setupYearFilter() {
 function filterCars() {
   const selectedYear = $('#yearInput')?.value;
   const carCards = $all('.car-card');
-  const brandBlocks = $all('.brand-block');
   if (!selectedYear) {
+    // Show all cars if no year is selected
     carCards.forEach(card => card.style.display = 'block');
-    brandBlocks.forEach(block => block.style.display = 'block');
+    $all('.brand-block').forEach(block => block.style.display = 'block');
     return;
   }
-  const matchedBrands = new Set();
   carCards.forEach(card => {
     const cardYear = card.getAttribute('data-year');
     const isMatch = cardYear === selectedYear;
     card.style.display = isMatch ? 'block' : 'none';
-    if (isMatch) {
-      const brand = card.getAttribute('data-brand');
-      if (brand) matchedBrands.add(brand);
-    }
   });
-  brandBlocks.forEach(block => {
-    const brand = block.getAttribute('data-brand');
-    block.style.display = matchedBrands.has(brand) ? 'block' : 'none';
+  // Hide brand blocks with no visible cars
+  $all('.brand-block').forEach(block => {
+    const gallery = block.querySelector('.car-gallery');
+    const visible = Array.from(gallery.children).some(card => card.style.display !== 'none');
+    block.style.display = visible ? 'block' : 'none';
   });
 }
 
@@ -159,24 +130,16 @@ function setupSortByYear() {
   if (!sortSelect) return;
   sortSelect.addEventListener('change', function () {
     const sortOrder = this.value;
-    const carCards = Array.from($all('.car-card'));
     const gallerySections = $all('.car-gallery');
-    carCards.forEach(card => {
-      const yearText = card.querySelector('h3')?.textContent || '';
-      const match = yearText.match(/\b(19|20)\d{2}\b/);
-      card.dataset.year = match ? parseInt(match[0]) : 0;
-    });
     gallerySections.forEach(section => {
       const cardsInSection = Array.from(section.querySelectorAll('.car-card'));
-      if (sortOrder === 'asc' || sortOrder === 'desc') {
-        cardsInSection.sort((a, b) => {
-          const yearA = parseInt(a.dataset.year);
-          const yearB = parseInt(b.dataset.year);
-          return sortOrder === 'asc' ? yearA - yearB : yearB - yearA;
-        });
-        section.innerHTML = '';
-        cardsInSection.forEach(card => section.appendChild(card));
-      }
+      cardsInSection.sort((a, b) => {
+        const yearA = parseInt(a.getAttribute('data-year')) || 0;
+        const yearB = parseInt(b.getAttribute('data-year')) || 0;
+        return sortOrder === 'asc' ? yearA - yearB : yearB - yearA;
+      });
+      section.innerHTML = '';
+      cardsInSection.forEach(card => section.appendChild(card));
     });
   });
 }
@@ -511,9 +474,9 @@ window.addEventListener('click', (event) => {
 
 // --- DOMContentLoaded Master ---
 document.addEventListener("DOMContentLoaded", () => {
+  $('#searchInput')?.addEventListener('input', searchCars);
   animateCars();
   searchCars();
-  filterByBrand();
   filterCars();
   setupSortByYear();
   setupCarForm();
@@ -524,6 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLogoModal();
   setupLightboxOverlay();
   loadCarsFromCSV();
+  setupAlphaSort()
 
   // Toggle between list and grid view
   const toggleBtn = $("#toggleViewBtn");
@@ -589,4 +553,22 @@ function renderAllCars() {
   animateCars();
   ensureDescriptions();
   renderCars();
+}
+
+function setupAlphaSort() {
+  const alphaBtn = $('#alphaSortBtn');
+  if (!alphaBtn) return;
+  alphaBtn.addEventListener('click', function () {
+    const gallerySections = $all('.car-gallery');
+    gallerySections.forEach(section => {
+      const cardsInSection = Array.from(section.querySelectorAll('.car-card'));
+      cardsInSection.sort((a, b) => {
+        const nameA = (a.querySelector('h2')?.textContent || '').toLowerCase();
+        const nameB = (b.querySelector('h2')?.textContent || '').toLowerCase();
+        return nameA.localeCompare(nameB);
+      });
+      section.innerHTML = '';
+      cardsInSection.forEach(card => section.appendChild(card));
+    });
+  });
 }
