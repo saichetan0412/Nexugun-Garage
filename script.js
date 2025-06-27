@@ -521,10 +521,10 @@ function parseCSV(text) {
 
 // Load cars from CSV and render
 function loadCarsFromCSV() {
-  fetch('Cars.csv')
-    .then(response => response.text())
-    .then(csv => {
-      carData = Papa.parse(csv, { header: true }).data;
+  fetch('cars.json')
+    .then(response => response.json())
+    .then(json => {
+      carData = json;
       renderAllCars();
     });
 }

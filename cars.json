@@ -1,0 +1,842 @@
+[
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Temerario",
+    "YEAR": 2026,
+    "DESCRIPTION": "Authentic Fuoriclasse",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Temerario.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$500,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Revuelto",
+    "YEAR": 2024,
+    "DESCRIPTION": "From Now On",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Revuelto.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$600,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Urus",
+    "YEAR": 2024,
+    "DESCRIPTION": "Unlock Any Road",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Urus.jpg",
+    "ENGINE": "4.0L V8",
+    "TOP SPEED": "305 km/h",
+    "PRICE": "$250,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Huracan",
+    "YEAR": 2024,
+    "DESCRIPTION": "Every Day Amplified",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Huracan.jpg",
+    "ENGINE": "5.2L V10",
+    "TOP SPEED": "325 km/h",
+    "PRICE": "$300,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Aventador",
+    "YEAR": 2019,
+    "DESCRIPTION": "Designed To Push Beyond Performance",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Aventador.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$400,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Sian",
+    "YEAR": 2019,
+    "DESCRIPTION": "An Icon",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Sian.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$450,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Centenario",
+    "YEAR": 2016,
+    "DESCRIPTION": "Tribute to the Future",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Centenario.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$700,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Egoista",
+    "YEAR": 2013,
+    "DESCRIPTION": "A Car for Itself",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Egoista.jpg",
+    "ENGINE": "5.2L V10",
+    "TOP SPEED": "325 km/h",
+    "PRICE": "$250,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Gallardo",
+    "YEAR": 2003,
+    "DESCRIPTION": "Expect The Unexpected",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Gallardo.jpg",
+    "ENGINE": "5.0L V10",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$200,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Murcielago",
+    "YEAR": 2001,
+    "DESCRIPTION": "Not just a car, but a statement",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Murcielago.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$350,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Diablo",
+    "YEAR": 1999,
+    "DESCRIPTION": "The Legend Lives On",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Diablo.jpeg",
+    "ENGINE": "5.7L V12",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$300,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Countach",
+    "YEAR": 1999,
+    "DESCRIPTION": "The Iconic Supercar",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Countach.jpg",
+    "ENGINE": "5.2L V10",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$250,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Centodieci",
+    "YEAR": 2019,
+    "DESCRIPTION": "Reminiscence Of An Icon",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Centodieci.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "420 km/h",
+    "PRICE": "$9,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Divo",
+    "YEAR": 2018,
+    "DESCRIPTION": "Modern coachbuilding at its best",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Divo.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "380 km/h",
+    "PRICE": "$5,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Chiron",
+    "YEAR": 2016,
+    "DESCRIPTION": "Breaking new dimensions",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Chiron.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "420 km/h",
+    "PRICE": "$3,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti La Voiture Noire",
+    "YEAR": 2019,
+    "DESCRIPTION": "The ultimate GT",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_La Voiture Noire.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "420 km/h",
+    "PRICE": "$18,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Veyron Super Sport",
+    "YEAR": 2010,
+    "DESCRIPTION": "World's fastest production car",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Veyron Super Sport.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "431 km/h",
+    "PRICE": "$2,500,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Vision Gran Turismo",
+    "YEAR": 2016,
+    "DESCRIPTION": "Virtual to reality",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Vision Gran Turismo.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "420 km/h",
+    "PRICE": "$3,500,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Mistral",
+    "YEAR": 2022,
+    "DESCRIPTION": "The ultimate roadster",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Mistral.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "420 km/h",
+    "PRICE": "$4,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti EB110 SS",
+    "YEAR": 1994,
+    "DESCRIPTION": "Super Sport Legend",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_EB110 SS.jpg",
+    "ENGINE": "3.5L V12",
+    "TOP SPEED": "355 km/h",
+    "PRICE": "$1,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti EB110 GT",
+    "YEAR": 1991,
+    "DESCRIPTION": "Revival of the Brand",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_EB110 GT.jpg",
+    "ENGINE": "3.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$1,500,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Type 57C Atlantic",
+    "YEAR": 1939,
+    "DESCRIPTION": "Art Deco Icon",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Type 57C Atlantic.jpg",
+    "ENGINE": "3.3L Inline-8",
+    "TOP SPEED": "200 km/h",
+    "PRICE": "$4,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Type 35",
+    "YEAR": 1927,
+    "DESCRIPTION": "Grand Prix Champion",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Type 35.jpg",
+    "ENGINE": "2.0L Inline-8",
+    "TOP SPEED": "200 km/h",
+    "PRICE": "$1,000,000.00"
+  },
+  {
+    "BRAND": "Bugatti",
+    "CAR MODEL": "Bugatti Bolide",
+    "YEAR": 2020,
+    "DESCRIPTION": "Forme follows performance",
+    "IMAGE PATH": "Images/Bugatti/Bugatti_Bolide.jpg",
+    "ENGINE": "8.0L W16",
+    "TOP SPEED": "500 km/h",
+    "PRICE": "$4,690,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Purosangue",
+    "YEAR": 2026,
+    "DESCRIPTION": "The First Four Door Ferrari",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_Purosangue.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$700,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari SF90 Stradale",
+    "YEAR": 2024,
+    "DESCRIPTION": "The Pinnacle of Performance",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_SF90 Stradale.jpg",
+    "ENGINE": "4.0L V8",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$350,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari F8 Tributo",
+    "YEAR": 2019,
+    "DESCRIPTION": "A celebration of excellence",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_F8 Tributo.jpg",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "330 km/h",
+    "PRICE": "$300,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari 296 GTB",
+    "YEAR": 2023,
+    "DESCRIPTION": "The Future of Performance",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_296 GTB.jpg",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$400,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari 812 Competizione",
+    "YEAR": 2022,
+    "DESCRIPTION": "The Ultimate V12 Experience",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_812 Competizione.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$800,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Roma",
+    "YEAR": 2021,
+    "DESCRIPTION": "Elegance Meets Performance",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_Roma.jpg",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$350,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari F8 Spider",
+    "YEAR": 2020,
+    "DESCRIPTION": "Open Air Performance",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_F8 Spider.jpg",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$300,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Monza SP2",
+    "YEAR": 2019,
+    "DESCRIPTION": "Icon a Series Speedster",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_Monza SP2.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$600,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari 812 Superfast",
+    "YEAR": 2017,
+    "DESCRIPTION": "The Most Powerful V12",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_812 Superfast.jpg",
+    "ENGINE": "6.3L V12",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$700,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari 488 GTB",
+    "YEAR": 2015,
+    "DESCRIPTION": "Turbocharged Excellence",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_488 GTB.jpg",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "330 km/h",
+    "PRICE": "$350,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari LaFerrari",
+    "YEAR": 2013,
+    "DESCRIPTION": "Hybrid Hypercar",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_LaFerrari.jpg",
+    "ENGINE": "6.3L V8",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$400,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari F12 berlinetta",
+    "YEAR": 2012,
+    "DESCRIPTION": "V12 Grand Tourer",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_F12 berlinetta.jpg",
+    "ENGINE": "6.3L V12",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$500,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 911 GT3",
+    "YEAR": 2024,
+    "DESCRIPTION": "The Ultimate Track Machine",
+    "IMAGE PATH": "Images/Porsche/Porsche_911 GT3.jpg",
+    "ENGINE": "4.0L Flat-6",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$200,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche Taycan",
+    "YEAR": 2023,
+    "DESCRIPTION": "Electric Performance",
+    "IMAGE PATH": "Images/Porsche/Porsche_Taycan.jpg",
+    "ENGINE": "Electric",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$150,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche Macan",
+    "YEAR": 2022,
+    "DESCRIPTION": "Compact Luxury SUV",
+    "IMAGE PATH": "Images/Porsche/Porsche_Macan.jpg",
+    "ENGINE": "3.0L Flat-6",
+    "TOP SPEED": "300 km/h",
+    "PRICE": "$120,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche Cayenne",
+    "YEAR": 2021,
+    "DESCRIPTION": "Luxury Meets Performance",
+    "IMAGE PATH": "Images/Porsche/Porsche_Cayenne.jpg",
+    "ENGINE": "4.0L Flat-6",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$250,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 718 Cayman",
+    "YEAR": 2020,
+    "DESCRIPTION": "Pure Driving Pleasure",
+    "IMAGE PATH": "Images/Porsche/Porsche_718 Cayman.jpg",
+    "ENGINE": "2.5L Flat-4",
+    "TOP SPEED": "280 km/h",
+    "PRICE": "$100,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche Panamera",
+    "YEAR": 2019,
+    "DESCRIPTION": "Luxury Sports Sedan",
+    "IMAGE PATH": "Images/Porsche/Porsche_Panamera.jpg",
+    "ENGINE": "3.0L Flat-6",
+    "TOP SPEED": "300 km/h",
+    "PRICE": "$180,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 911 Carrera",
+    "YEAR": 2018,
+    "DESCRIPTION": "Timeless Icon",
+    "IMAGE PATH": "Images/Porsche/Porsche_911 Carrera.jpg",
+    "ENGINE": "3.0L Flat-6",
+    "TOP SPEED": "290 km/h",
+    "PRICE": "$220,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 918 Spyder",
+    "YEAR": 2017,
+    "DESCRIPTION": "Hybrid Hypercar",
+    "IMAGE PATH": "Images/Porsche/Porsche_918 Spyder.jpg",
+    "ENGINE": "4.0L Flat-6",
+    "TOP SPEED": "310 km/h",
+    "PRICE": "$300,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 911 Turbo S",
+    "YEAR": 2016,
+    "DESCRIPTION": "Unmatched Performance",
+    "IMAGE PATH": "Images/Porsche/Porsche_911 Turbo S.jpg",
+    "ENGINE": "3.8L Flat-6",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$350,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche Boxster",
+    "YEAR": 2015,
+    "DESCRIPTION": "Open-Top Sports Car",
+    "IMAGE PATH": "Images/Porsche/Porsche_Boxster.jpg",
+    "ENGINE": "3.4L Flat-6",
+    "TOP SPEED": "290 km/h",
+    "PRICE": "$150,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 911 GT3 RS",
+    "YEAR": 2014,
+    "DESCRIPTION": "Track-Focused Performance",
+    "IMAGE PATH": "Images/Porsche/Porsche_911 GT3 RS.jpg",
+    "ENGINE": "4.0L Flat-6",
+    "TOP SPEED": "330 km/h",
+    "PRICE": "$400,000.00"
+  },
+  {
+    "BRAND": "Porsche",
+    "CAR MODEL": "Porsche 911 Carrera S",
+    "YEAR": 2013,
+    "DESCRIPTION": "The Essence of Porsche",
+    "IMAGE PATH": "Images/Porsche/Porsche_911 Carrera S.jpg",
+    "ENGINE": "3.8L Flat-6",
+    "TOP SPEED": "300 km/h",
+    "PRICE": "$250,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Spectre",
+    "YEAR": 2024,
+    "DESCRIPTION": "The Electric Luxury",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Spectre.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$450,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Ghost",
+    "YEAR": 2023,
+    "DESCRIPTION": "The Pinnacle of Luxury",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Ghost.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$500,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Cullinan",
+    "YEAR": 2022,
+    "DESCRIPTION": "The Ultimate SUV",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Cullinan.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$600,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Dawn",
+    "YEAR": 2021,
+    "DESCRIPTION": "The Open-Air Luxury",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Dawn.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$700,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Wraith",
+    "YEAR": 2020,
+    "DESCRIPTION": "The Grand Tourer",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Wraith.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$800,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Phantom",
+    "YEAR": 2019,
+    "DESCRIPTION": "The Ultimate Luxury Sedan",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Phantom.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$900,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Silver Dawn",
+    "YEAR": 2018,
+    "DESCRIPTION": "The Classic Elegance",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Silver Dawn.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$1,000,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Silver Cloud",
+    "YEAR": 2017,
+    "DESCRIPTION": "The Timeless Classic",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Silver Cloud.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$1,200,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Silver Spirit",
+    "YEAR": 2016,
+    "DESCRIPTION": "The Luxury Sedan",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Silver Spirit.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$1,500,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Silver Shadow",
+    "YEAR": 2015,
+    "DESCRIPTION": "The Classic Luxury",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Silver Shadow.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$1,800,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Silver Seraph",
+    "YEAR": 2014,
+    "DESCRIPTION": "The Modern Classic",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Silver Seraph.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$2,000,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Corniche",
+    "YEAR": 2013,
+    "DESCRIPTION": "The Convertible Luxury",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Corniche.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$2,500,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Phantom Drophead Coupe",
+    "YEAR": 2012,
+    "DESCRIPTION": "The Open-Air Luxury",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Phantom Drophead Coupe.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$3,000,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Phantom Coupe",
+    "YEAR": 2011,
+    "DESCRIPTION": "The Grand Tourer",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Phantom Coupe.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$3,500,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Silver Ghost",
+    "YEAR": 1923,
+    "DESCRIPTION": "The Original Luxury Car",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Silver Ghost.jpg",
+    "ENGINE": "7.4L V6",
+    "TOP SPEED": "125 km/h",
+    "PRICE": "$264,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Sweptail",
+    "YEAR": 2017,
+    "DESCRIPTION": "The Pinnacle of Bespoke",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Sweptail.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$13,000,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce Droptail La Rose Noire",
+    "YEAR": 2024,
+    "DESCRIPTION": "A uniquely romantic expression",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_Droptail La Rose Noire.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$30,000,000.00"
+  },
+  {
+    "BRAND": "RollsRoyce",
+    "CAR MODEL": "Rolls Royce BoatTail",
+    "YEAR": 2022,
+    "DESCRIPTION": "The Next Chapter",
+    "IMAGE PATH": "Images/RollsRoyce/RollsRoyce_BoatTail.jpg",
+    "ENGINE": "6.75L V12",
+    "TOP SPEED": "250 km/h",
+    "PRICE": "$28,000,000.00"
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Autentica",
+    "YEAR": 2023,
+    "DESCRIPTION": "Final Salute",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Autentica.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Essenza",
+    "YEAR": 2021,
+    "DESCRIPTION": "The Purest Track Experience",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Essenza.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Invencible",
+    "YEAR": 2023,
+    "DESCRIPTION": "Invincible",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Invencible.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Lanzador",
+    "YEAR": 2023,
+    "DESCRIPTION": "The Future Of Electric Supercars",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Lanzador.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini SC18",
+    "YEAR": 2019,
+    "DESCRIPTION": "The One-Off for Road and Track",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_SC18.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini SC20",
+    "YEAR": 2020,
+    "DESCRIPTION": "Pure adrenaline in Open-Air",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_SC20.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini SC63 Racecar",
+    "YEAR": 2024,
+    "DESCRIPTION": "Race - Hypercar",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_SC63 Racecar.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Terzo Millennio",
+    "YEAR": 2017,
+    "DESCRIPTION": "A View of the Future",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Terzo Millennio.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Lamborghini",
+    "CAR MODEL": "Lamborghini Veneno",
+    "YEAR": 2013,
+    "DESCRIPTION": "100 Years of Innovation in Half the Time",
+    "IMAGE PATH": "Images/Lamborghini/Lamborghini_Veneno.jpg",
+    "ENGINE": "",
+    "TOP SPEED": "",
+    "PRICE": ""
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Daytona SP3",
+    "YEAR": 2022,
+    "DESCRIPTION": "Inspired by the 1960s racing spirit",
+    "IMAGE PATH": "Images/Ferrari/Ferrari_Daytona SP3.jpg",
+    "ENGINE": "6.5L V12",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$2,200,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Portofino M",
+    "YEAR": 2021,
+    "DESCRIPTION": "A GT for every day",
+    "IMAGE PATH": "",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$250,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari GTC4Lusso",
+    "YEAR": 2020,
+    "DESCRIPTION": "Luxury meets performance",
+    "IMAGE PATH": "",
+    "ENGINE": "6.3L V12",
+    "TOP SPEED": "335 km/h",
+    "PRICE": "$300,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari F60 America",
+    "YEAR": 2016,
+    "DESCRIPTION": "Celebrating 60 years in America",
+    "IMAGE PATH": "",
+    "ENGINE": "6.3L V12",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$2,500,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari J50",
+    "YEAR": 2017,
+    "DESCRIPTION": "Exclusive for Japan",
+    "IMAGE PATH": "",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "335 km/h",
+    "PRICE": "$3,000,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari 488 Pista",
+    "YEAR": 2019,
+    "DESCRIPTION": "Track-focused performance",
+    "IMAGE PATH": "",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "340 km/h",
+    "PRICE": "$350,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari California T",
+    "YEAR": 2017,
+    "DESCRIPTION": "A versatile grand tourer",
+    "IMAGE PATH": "",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "316 km/h",
+    "PRICE": "$200,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari F430 Scuderia",
+    "YEAR": 2008,
+    "DESCRIPTION": "Sharper, lighter, faster",
+    "IMAGE PATH": "",
+    "ENGINE": "4.3L V8",
+    "TOP SPEED": "319 km/h",
+    "PRICE": "$288,000.00"
+  },
+  {
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Enzo",
+    "YEAR": 2004,
+    "DESCRIPTION": "Formula 1 technology for the road",
+    "IMAGE PATH": "",
+    "ENGINE": "6.0L V12",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$3,000,000.00"
+  }
+]
