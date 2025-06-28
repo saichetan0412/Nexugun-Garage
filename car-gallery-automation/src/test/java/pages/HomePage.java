@@ -1,149 +1,176 @@
 package pages;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.TimeoutException;
 
+/**
+ * Base Page Object for Home Page.
+ * Provides common utility methods for Selenium WebDriver tests.
+ */
 public class HomePage {
-    private WebDriver driver;
+    protected WebDriver driver;
 
-    // Locators
-    private By searchInput = By.id("searchInput");
-    private By yearInput = By.id("yearInput");
-    private By yearGrid = By.id("yearGrid");
-    private By sortFilter = By.id("sortFilter");
-    private By alphaSortBtn = By.id("alphaSortBtn");
-    private By tabButtons = By.cssSelector(".tab-button");
-    private By toggleViewBtn = By.id("toggleViewBtn");
+    //--- Locators --- 
+    /** Locators for Main Header */
+    private static final By MAIN_HEADER = By.cssSelector(".header-main h1");
+    private static final By LOGO = By.cssSelector(".header-main .header-logo");
+    /** Locators for Search and Filters */
+    private static final By SEARCH_BAR = By.id("searchInput");
+    private static final By YEAR_INPUT = By.id("yearInput");
+    private static final By YEAR_DROPDOWN = By.id("yearDropdown");
+    private static final By YEAR_GRID = By.id("yearGrid");
+    private static final By CLEAR_YEAR_BUTTON = By.id("clearYear");
+    private static final By SORT_YEAR_FILTER = By.id("sortFilter"); 
+    private static final By SORT_AZ_BUTTON = By.id("alphaSortBtn");
+    /** Locators for Brand Tabs */ 
+    private static final By ALL_TAB = By.cssSelector("button.tab-button[data-brand='All']");
+    private static final By LAMBORGHINI_TAB = By.cssSelector("button.tab-button[data-brand='Lamborghini']");
+    private static final By BUGATTI_TAB = By.cssSelector("button.tab-button[data-brand='Bugatti']");
+    private static final By FERRARI_TAB = By.cssSelector("button.tab-button[data-brand='Ferrari']");
+    private static final By PORSCHE_TAB = By.cssSelector("button.tab-button[data-brand='Porsche']");
+    private static final By ROLLSROYCE_TAB = By.cssSelector("button.tab-button[data-brand='RollsRoyce']");
+    private static final By ALL_TABS = By.cssSelector("button.tab-button"); //generic locator for all tabs
+    /** Locator for Toggle Button */
+    private static final By TOGGLE_VIEW_BUTTON = By.id("toggleViewBtn"); 
+    /** Locators for Brand Headers and Logos */
+    private static final By LAMBORGHINI_HEADER = By.cssSelector(".header-lamborghini h1");
+    private static final By LAMBORGHINI_LOGO = By.cssSelector(".header-lamborghini .header-logo");
+    private static final By BUGATTI_HEADER = By.cssSelector(".header-bugatti h1");
+    private static final By BUGATTI_LOGO = By.cssSelector(".header-bugatti .header-logo");
+    private static final By FERRARI_HEADER = By.cssSelector(".header-ferrari h1");
+    private static final By FERRARI_LOGO = By.cssSelector(".header-ferrari .header-logo");
+    private static final By PORSCHE_HEADER = By.cssSelector(".header-porsche h1");
+    private static final By PORSCHE_LOGO = By.cssSelector(".header-porsche .header-logo");
+    private static final By ROLLSROYCE_HEADER = By.cssSelector(".header-rollsroyce h1");
+    private static final By ROLLSROYCE_LOGO = By.cssSelector(".header-rollsroyce .header-logo");
+    /** Locator for Car Cards */
+    private static final By CAR_CARDS = By.cssSelector(".car-card");
 
-    // Constructor
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // Open the home page
-    public void open(String url) {
+    /** Screenshot Method */
+    public void takeScreenshot(String filePath) {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File src = ts.getScreenshotAs(OutputType.FILE);
+        try {
+            FileHandler.copy(src, new File(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** Wait Method - for an element to be visible */
+    public WebElement waitForElementVisible(By locator, int timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    /** Wait Method - for an element to be clickable */
+    public WebElement waitForElementClickable(By locator, int timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    /** Get URL - Opens the specified URL in the browser */
+    public void openUrl(String url) {
         driver.get(url);
     }
 
-    public String getMainHeading() {
-    return driver.findElement(By.cssSelector("h1")).getText();
-    }
-
-    // Check if at least one car card is present
-    public boolean isCarCardPresent() {
-        // Wait for car cards to be present before checking
-        try {
-            new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.className("car-card")));
-        } catch (TimeoutException e) {
-            return false;
-        }
-        return driver.findElements(By.className("car-card")).size() > 0;
-    }
-
-    // Get the page title
-    public String getTitle() {
+    /** Get Title - Returns the current page title */
+    public String getPageTitle() {
         return driver.getTitle();
     }
 
-    // Search for a car by name
-    public void searchCar(String carName) {
-        WebElement search = driver.findElement(searchInput);
-        search.clear();
-        search.sendKeys(carName);
-        search.sendKeys(Keys.ENTER);
+    /** Checks if the main header is present */
+    public boolean isMainHeaderPresent() {
+        return isElementPresent(MAIN_HEADER);
     }
 
-    // Select a year from the dropdown
-    public void selectYear(String year) {
-        driver.findElement(yearInput).click();
-        // Wait for dropdown to appear (simple sleep, replace with WebDriverWait for production)
-        try { Thread.sleep(500); } catch (InterruptedException e) {}
-        for (WebElement y : driver.findElement(yearGrid).findElements(By.tagName("button"))) {
-            if (y.getText().equals(year)) {
-                y.click();
-                break;
-            }
+    /** Element Presence - Checks if an element is present in the DOM */
+    public boolean isElementPresent(By locator) {
+        return !driver.findElements(locator).isEmpty();
+    }
+
+    /** Gets the text of the specified element */
+    public String getElementText(By locator) {
+        return driver.findElement(locator).getText();
+    }
+
+    /** Clicks the specified element */
+    public void clickElement(By locator) {
+        driver.findElement(locator).click();
+    }
+
+    /** Enters text into the specified element */
+    public void enterText(By locator, String text) {
+        WebElement element = driver.findElement(locator);
+        element.clear();
+        element.sendKeys(text);
+    }
+
+    /** Returns a list of elements matching the locator */
+    public List<WebElement> getElements(By locator) {
+        return driver.findElements(locator);
+    }
+
+    /** Scrolls to the specified element */
+    public void scrollToElement(By locator) {
+        WebElement element = driver.findElement(locator);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    /** Waits for the page to fully load */
+    public void waitForPageLoad() {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(
+            webDriver -> ((JavascriptExecutor) webDriver)
+                .executeScript("return document.readyState").equals("complete"));
+    }
+
+    /** Checks if the specified element is displayed */
+    public boolean isElementDisplayed(By locator) {
+        try {
+            return driver.findElement(locator).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
         }
     }
 
-    // Use the sort year filter
-    public void sortByYear(String order) {
-        WebElement sort = driver.findElement(sortFilter);
-        sort.click();
-        sort.findElement(By.xpath("//option[@value='" + order + "']")).click();
+    /** Gets the value of a specified attribute from an element */
+    public String getAttribute(By locator, String attribute) {
+        return driver.findElement(locator).getAttribute(attribute);
     }
 
-    // Click the alphabetical sort button
-    public void clickAlphaSort() {
-        driver.findElement(alphaSortBtn).click();
+    /** Selects an option in a dropdown by visible text */
+    public void selectDropdownByVisibleText(By locator, String text) {
+        WebElement dropdown = driver.findElement(locator);
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(text);
     }
 
-    // Click a brand tab by visible text
-    public void clickBrandTab(String brand) {
-        for (WebElement tab : driver.findElements(tabButtons)) {
-            if (tab.getText().trim().equalsIgnoreCase(brand)) {
-                tab.click();
-                break;
-            }
-        }
+    /** Returns the current URL */
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
     }
 
-    // Switch to list view
-    public void switchToListView() {
-        WebElement toggle = driver.findElement(toggleViewBtn);
-        if (toggle.getText().toLowerCase().contains("list")) {
-            toggle.click();
-        }
+    /** Refreshes the current page */
+    public void refreshPage() {
+        driver.navigate().refresh();
     }
 
-    // Switch to grid view if not already in grid view
-    public void switchToGridView() {
-        WebElement toggle = driver.findElement(toggleViewBtn);
-        if (toggle.getText().toLowerCase().contains("grid")) {
-            toggle.click();
-        }
-    }
-
-    // Get the number of visible car cards
-    public int getVisibleCarCardCount() {
-        return driver.findElements(By.cssSelector(".car-card")).size();
-    }
-
-    // Get a list of car names currently displayed
-    public List<String> getDisplayedCarNames() {
-        List<String> names = new ArrayList<>();
-        for (WebElement card : driver.findElements(By.cssSelector(".car-card h2"))) {
-            names.add(card.getText());
-        }
-        return names;
-    }
-
-    // Clear the search input
-    public void clearSearch() {
-        driver.findElement(searchInput).clear();
-    }
-
-    // Clear the year filter (if a clear button exists)
-    public void clearYearFilter() {
-        WebElement clearBtn = driver.findElement(By.id("clearYear"));
-        if (clearBtn.isDisplayed()) {
-            clearBtn.click();
-        }
-    }
-
-    // Wait for car cards to be visible (simple version)
-    public void waitForCarCards() {
-        new WebDriverWait(driver, Duration.ofSeconds(20))
-            .until(ExpectedConditions.visibilityOfElementLocated(By.className("car-card")));
+    /** Closes the browser */
+    public void closeBrowser() {
+        driver.quit();
     }
 }
+

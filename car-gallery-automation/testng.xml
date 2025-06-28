@@ -11,4 +11,8 @@
             <!-- Add more test classes here as needed -->
         </classes>
     </test>
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+        <listener class-name="org.testng.reporters.XMLReporter"/>
+    </listeners>
 </suite>
