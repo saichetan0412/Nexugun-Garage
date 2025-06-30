@@ -172,5 +172,41 @@ public class HomePage {
     public void closeBrowser() {
         driver.quit();
     }
+
+    /** Returns the main header text */
+    public String getMainHeaderText() {
+        return driver.findElement(MAIN_HEADER).getText();
+    }
+
+    /** Hovers over the logo and checks if it spins (returns true if spinning class is present) */
+    public boolean hoverOverLogoAndCheckSpin() {
+        WebElement logo = driver.findElement(LOGO);
+        org.openqa.selenium.interactions.Actions actions = new org.openqa.selenium.interactions.Actions(driver);
+        actions.moveToElement(logo).perform();
+        // Wait a moment for animation to start
+        try { Thread.sleep(1000); } catch (InterruptedException e) {}
+        // Check if the logo has a spinning class (e.g., "spin" or similar)
+        String classAttr = logo.getAttribute("class");
+        return classAttr != null && classAttr.contains("spin");
+    }
+
+    /** Enters text into the car search bar */
+    public void enterSearchText(String text) {
+        WebElement searchBar = driver.findElement(SEARCH_BAR);
+        searchBar.clear();
+        searchBar.sendKeys(text);
+    }
+
+    /** Returns the count of visible car cards */
+    public int getVisibleCarCardCount() {
+        List<WebElement> cards = driver.findElements(CAR_CARDS);
+        int visibleCount = 0;
+        for (WebElement card : cards) {
+            if (card.isDisplayed()) {
+                visibleCount++;
+            }
+        }
+        return visibleCount;
+    }
 }
 
