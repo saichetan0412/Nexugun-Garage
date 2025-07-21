@@ -505,6 +505,28 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCompareBar();
     });
   }
+
+  // Add click event to car cards to open a new tab
+  function setupCarCardClick() {
+    $all('.car-card').forEach(card => {
+      card.addEventListener('click', function (e) {
+        if (e.target.classList.contains('compare-checkbox')) return;
+        // Get car model name
+        const carName = card.querySelector('h2')?.textContent || '';
+        // Find car object from carData
+        const carObj = carData.find(car => car['CAR MODEL'] === carName);
+        if (carObj && carObj['VIDEO_URL']) {
+          window.open(`car-video.html?video=${encodeURIComponent(carObj['VIDEO_URL'])}&model=${encodeURIComponent(carName)}`, '_blank');
+        } else {
+          window.open('car-video.html?model=' + encodeURIComponent(carName), '_blank');
+        }
+      });
+    });
+  }
+  setupCarCardClick();
+  // If cars are re-rendered, re-attach the click event
+  const observer = new MutationObserver(setupCarCardClick);
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 
 // Utility to parse CSV (simple version)

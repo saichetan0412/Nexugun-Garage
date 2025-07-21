@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Video</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #181818;
+      overflow: hidden;
+    }
+    .video-fullscreen-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background: #181818;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .car-title-overlay {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      text-align: center;
+      padding: 32px 0 16px 0;
+      font-size: 2.8rem;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      font-weight: 900;
+      color: #ffb300;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #181818cc 60%, #ffb30022 100%);
+      text-shadow: 0 2px 16px #ffb30088, 0 2px 8px #000;
+      z-index: 2;
+      border-bottom: 2px solid #ffb300;
+      border-radius: 0 0 32px 32px;
+      animation: fadeInTitle 1.2s cubic-bezier(.77,0,.18,1) forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInTitle {
+      to { opacity: 1; }
+    }
+    .video-player-full {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+      border: none;
+      background: #181818;
+      box-shadow: 0 0 128px #ffb30044, 0 16px 64px rgba(0,0,0,0.38);
+    }
+    @media (max-width: 900px) {
+      .car-title-overlay { font-size: 1.4rem; padding: 18px 0 8px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-fullscreen-container">
+    <div id="carTitle" class="car-title-overlay"></div>
+    <div id="videoContainer"></div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const videoUrl = params.get('video');
+    const model = params.get('model');
+    document.getElementById('carTitle').textContent = model ? decodeURIComponent(model) : '';
+    if (videoUrl) {
+      document.getElementById('videoContainer').innerHTML =
+        `<video class="video-player-full" controls autoplay>
+           <source src="${videoUrl}" type="video/mp4">
+           Your browser does not support the video tag.
+         </video>`;
+    } else {
+      document.getElementById('videoContainer').innerHTML =
+        `<div style="color:#fff;font-size:2rem;text-align:center;margin-top:40vh;">No video available for this car.</div>`;
+    }
+  </script>
+</body>
+</html>
