@@ -1,0 +1,99 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #0d0d0d;
+  color: #eaeaea;
+}
+.admin-page {
+  width: min(1400px, 96%);
+  margin: 1rem auto 2rem;
+}
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+h1, h2 {
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: .04em;
+  margin: 0 0 .4rem;
+}
+.admin-back-link {
+  text-decoration: none;
+  color: #111;
+  background: #ffb300;
+  padding: .55rem .85rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.admin-card {
+  background: #141414;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+}
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: .85rem;
+  gap: .3rem;
+}
+input {
+  background: #1c1c1c;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 8px;
+  color: #f0f0f0;
+  padding: .5rem .55rem;
+}
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: .5rem;
+}
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: .55rem .8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+button.secondary {
+  background: #2a2a2a;
+  color: #f2f2f2;
+  border: 1px solid rgba(255,255,255,.18);
+}
+#saveBtn { background: #ffb300; color: #121212; }
+.status-message { margin: .7rem 0 0; min-height: 1.2rem; color: #ffca57; }
+.table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .7rem;
+}
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  border-bottom: 1px solid rgba(255,255,255,.11);
+  padding: .55rem .35rem;
+  text-align: left;
+}
+.action-buttons { display: flex; gap: .4rem; }
+.action-buttons button { padding: .42rem .6rem; }
+.action-buttons .edit-btn { background: #ffb300; color: #141414; }
+.action-buttons .delete-btn { background: #7c1a1a; color: #f8f8f8; }
+
+@media (max-width: 900px) {
+  .admin-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .admin-form { grid-template-columns: 1fr; }
+}

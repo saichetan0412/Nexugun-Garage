@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEXUGUNS GARAGE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   </head>
@@ -14,7 +17,19 @@
         <img src="Images/Logo/Official-logo.png" class="header-logo" data-title="NEXUGUNS GARAGE" data-description="Designed by Nexus" data-image="Images/Nexus.jpg" alt="NG Logo"/>
         <h1>NEXUGUNS GARAGE</h1>
       </div>  
+      <a href="admin.html" class="admin-link">Admin Console</a>
     </header>
+    <section class="hero-section">
+      <p class="hero-kicker">Driven By Dreams</p>
+      <h2>Elite Automotive Experience</h2>
+      <p class="hero-subtitle">Explore iconic supercars with a cinematic and premium browsing experience.</p>
+    </section>
+    <section id="recentlyViewedSection" class="recently-viewed-section" style="display:none;">
+      <div class="recently-header">
+        <h3>Recently Viewed</h3>
+      </div>
+      <div id="recentlyViewedList" class="recently-viewed-list"></div>
+    </section>
     <!-- Search and Filter Bar -->
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search cars by name..." />
@@ -41,7 +56,8 @@
     </div>
     <!-- CATEGORY TABS -->
     <div class="tabs-container">
-      <button class="tab-button active" data-brand="All">All</button>
+      <button class="tab-button active active-tab" data-brand="All">All</button>
+      <button class="tab-button" data-brand="Favorites">Favorites</button>
       <button class="tab-button" data-brand="Lamborghini">Lamborghini</button>
       <button class="tab-button" data-brand="Bugatti">Bugatti</button>
       <button class="tab-button" data-brand="Ferrari">Ferrari</button>
@@ -108,13 +124,13 @@
       <img id="lightboxImage" class="lightbox-image" src="" alt="Enlarged view" />
     </div>
     <!-- Compare Bar -->
-    <div id="compareBar" style="display:none;position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:10px;text-align:center;z-index:10000;">
+    <div id="compareBar">
       <span id="compareCount">0</span> cars selected.
-      <button id="compareBtn" style="margin-left:20px;padding:8px 20px;border-radius:8px;font-weight:bold;">Compare</button>
-      <button id="clearCompareBtn" style="margin-left:10px;">Clear</button>
+      <button id="compareBtn">Compare</button>
+      <button id="clearCompareBtn">Clear</button>
     </div>
     <!-- Comparison Modal -->
-    <div id="compareModal" class="compare-modal" style="display:none;">
+    <div id="compareModal" class="compare-modal">
       <div class="compare-modal-content">
         <span id="closeCompareModal" class="close">&times;</span>
         <div id="compareModalBody"></div>

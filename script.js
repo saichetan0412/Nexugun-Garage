@@ -1,4 +1,5 @@
-let carData = []; // Holds all car objects
+let carData = []; // Holds normalized API car objects
+let activeBrandFilter = 'All';
 
 // --- Utility Functions ---
 function $(selector) {
@@ -6,6 +7,117 @@ function $(selector) {
 }
 function $all(selector) {
   return document.querySelectorAll(selector);
+}
+
+function getStoredArray(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function setStoredArray(key, arr) {
+  localStorage.setItem(key, JSON.stringify(arr));
+}
+
+function getFavoriteIds() {
+  return getStoredArray('favoriteCarIds');
+}
+
+function isFavoriteCar(carId) {
+  return getFavoriteIds().includes(carId);
+}
+
+function toggleFavoriteCar(carId) {
+  const favorites = getFavoriteIds();
+  const next = favorites.includes(carId)
+    ? favorites.filter(id => id !== carId)
+    : [...favorites, carId];
+  setStoredArray('favoriteCarIds', next);
+}
+
+function addRecentlyViewed(carId) {
+  const current = getStoredArray('recentlyViewedCarIds').filter(id => id !== carId);
+  current.unshift(carId);
+  setStoredArray('recentlyViewedCarIds', current.slice(0, 10));
+}
+
+function renderRecentlyViewed() {
+  const section = $('#recentlyViewedSection');
+  const list = $('#recentlyViewedList');
+  if (!section || !list) return;
+
+  const ids = getStoredArray('recentlyViewedCarIds');
+  const items = ids
+    .map(id => carData.find(car => car.id === id))
+    .filter(Boolean)
+    .slice(0, 6);
+
+  if (!items.length) {
+    section.style.display = 'none';
+    list.innerHTML = '';
+    return;
+  }
+
+  section.style.display = 'block';
+  list.innerHTML = items.map(car => `
+    <button class="recent-car-chip" data-car-id="${car.id}">
+      <img src="${car.imagePath}" alt="${car.model}" />
+      <span>${car.model}</span>
+    </button>
+  `).join('');
+
+  list.querySelectorAll('.recent-car-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const carId = chip.getAttribute('data-car-id');
+      window.open(`car-detail.html?id=${encodeURIComponent(carId)}`, '_blank');
+    });
+  });
+}
+
+function renderLoadingSkeletons() {
+  const skeletonCard = `
+    <div class="car-card skeleton-card">
+      <div class="skeleton-line skeleton-title"></div>
+      <div class="skeleton-image"></div>
+      <div class="skeleton-line skeleton-subtitle"></div>
+    </div>
+  `;
+  $all('.car-gallery').forEach((gallery) => {
+    gallery.innerHTML = `${skeletonCard}${skeletonCard}${skeletonCard}`;
+  });
+}
+
+function setupScrollReveal() {
+  const targets = [
+    ...$all('.search-container'),
+    ...$all('.tabs-container'),
+    ...$all('.hero-section'),
+    ...$all('.brand-block')
+  ];
+
+  targets.forEach((el) => el.classList.add('reveal-on-scroll'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach((el) => observer.observe(el));
+}
+
+function setupHeroParallax() {
+  const hero = $('.hero-section');
+  if (!hero) return;
+  window.addEventListener('scroll', () => {
+    const offset = Math.min(window.scrollY * 0.18, 40);
+    hero.style.transform = `translateY(${offset}px)`;
+  });
 }
 
 // --- Car Animation ---
@@ -18,27 +130,7 @@ function animateCars() {
 
 // --- Car Search ---
 function searchCars() {
-  const query = $('#searchInput')?.value.trim().toLowerCase() || '';
-  const carCards = $all('.car-card');
-  if (query.length < 3) {
-    // Show all cars if less than 3 characters
-    carCards.forEach(card => card.style.display = 'block');
-    $all('.brand-block').forEach(block => block.style.display = 'block');
-    return;
-  }
-  let anyVisible = false;
-  carCards.forEach(card => {
-    const carName = card.querySelector('h2')?.textContent.toLowerCase() || '';
-    const isMatch = carName.includes(query);
-    card.style.display = isMatch ? 'block' : 'none';
-    if (isMatch) anyVisible = true;
-  });
-  // Hide brand blocks with no visible cars
-  $all('.brand-block').forEach(block => {
-    const gallery = block.querySelector('.car-gallery');
-    const visible = Array.from(gallery.children).some(card => card.style.display !== 'none');
-    block.style.display = visible ? 'block' : 'none';
-  });
+  applyVisibilityFilters();
 }
 
 // --- Car Year Filter ---
@@ -103,24 +195,32 @@ function setupYearFilter() {
 
 // --- Car Filter ---
 function filterCars() {
-  const selectedYear = $('#yearInput')?.value;
-  const carCards = $all('.car-card');
-  if (!selectedYear) {
-    // Show all cars if no year is selected
-    carCards.forEach(card => card.style.display = 'block');
-    $all('.brand-block').forEach(block => block.style.display = 'block');
-    return;
-  }
-  carCards.forEach(card => {
-    const cardYear = card.getAttribute('data-year');
-    const isMatch = cardYear === selectedYear;
-    card.style.display = isMatch ? 'block' : 'none';
+  applyVisibilityFilters();
+}
+
+function applyVisibilityFilters() {
+  const query = ($('#searchInput')?.value || '').trim().toLowerCase();
+  const selectedYear = $('#yearInput')?.value || '';
+  const favorites = getFavoriteIds();
+  const isFavoritesMode = activeBrandFilter === 'Favorites';
+
+  $all('.car-card').forEach((card) => {
+    const name = (card.getAttribute('data-name') || card.querySelector('h2')?.textContent || '').toLowerCase();
+    const cardYear = card.getAttribute('data-year') || '';
+    const cardBrand = card.getAttribute('data-brand') || '';
+    const cardId = card.getAttribute('data-id') || '';
+
+    const matchesQuery = query.length < 3 || name.includes(query);
+    const matchesYear = !selectedYear || cardYear === selectedYear;
+    const matchesBrand = activeBrandFilter === 'All' || activeBrandFilter === 'Favorites' || cardBrand === activeBrandFilter;
+    const matchesFavorite = !isFavoritesMode || favorites.includes(cardId);
+
+    card.style.display = (matchesQuery && matchesYear && matchesBrand && matchesFavorite) ? 'block' : 'none';
   });
-  // Hide brand blocks with no visible cars
-  $all('.brand-block').forEach(block => {
-    const gallery = block.querySelector('.car-gallery');
-    const visible = Array.from(gallery.children).some(card => card.style.display !== 'none');
-    block.style.display = visible ? 'block' : 'none';
+
+  $all('.brand-block').forEach((block) => {
+    const visibleCards = Array.from(block.querySelectorAll('.car-card')).some(card => card.style.display !== 'none');
+    block.style.display = visibleCards ? 'block' : 'none';
   });
 }
 
@@ -148,21 +248,32 @@ function setupSortByYear() {
 function setupCarForm() {
   const carForm = $('#carForm');
   if (!carForm) return;
-  carForm.addEventListener('submit', function (e) {
+  carForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     const name = $('#carName')?.value;
     const year = $('#carYear')?.value;
     const desc = $('#carDesc')?.value;
     const brand = $('#carBrand')?.value;
     const image = $('#carImage')?.value || `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
-    const newCar = { name, year, description: desc, brand, image };
-    carData.push(newCar);
-    renderCars(carData);
-    this.reset();
-    const index = $all(".animate-car").length - 1;
-    const carCard = $all(".animate-car")[index];
-    carCard.style.animationDelay = `${index * 300}ms`;
-    setTimeout(() => carCard.classList.add("show"), 10);
+    const payload = {
+      model: name,
+      year: Number(year),
+      description: desc,
+      brand,
+      imagePath: image
+    };
+    try {
+      await fetch('/api/cars', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      await loadCarsFromCSV();
+      this.reset();
+    } catch (error) {
+      console.error('Failed to add car:', error);
+      alert('Unable to save car right now.');
+    }
   });
 }
 
@@ -205,7 +316,8 @@ function renderCars() {
     let cardHTML = '';
     if (isList) {
       cardHTML = `
-        <input type="checkbox" class="compare-checkbox" data-car-id="${name}">
+        <button class="favorite-btn ${isFavoriteCar(card.getAttribute('data-id')) ? 'active' : ''}" data-car-id="${card.getAttribute('data-id')}" title="Toggle Favorite">★</button>
+        <input type="checkbox" class="compare-checkbox" data-car-id="${card.getAttribute('data-id')}">
         <div class="car-card-left">
           <img src="${image}" alt="${name}" />
           <div>
@@ -223,6 +335,7 @@ function renderCars() {
       `;
     } else {
       cardHTML = `
+        <button class="favorite-btn ${isFavoriteCar(card.getAttribute('data-id')) ? 'active' : ''}" data-car-id="${card.getAttribute('data-id')}" title="Toggle Favorite">★</button>
         <img src="${image}" alt="${name}" />
         <h2>${name}</h2>
         <p>${year} – ${description}</p>
@@ -263,22 +376,17 @@ function setupTabs() {
   const tabButtons = $all(".tab-button");
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-      tabButtons.forEach(btn => btn.classList.remove('active-tab'));
-      button.classList.add('active-tab');
-      const selectedBrand = button.getAttribute('data-brand');
-      const brandBlocks = $all('.brand-block');
-      brandBlocks.forEach(block => {
-        const blockBrand = block.getAttribute('data-brand');
-        block.style.display = (selectedBrand === 'All' || selectedBrand === blockBrand)
-          ? 'block'
-          : 'none';
-      });
+      tabButtons.forEach(btn => btn.classList.remove('active-tab', 'active'));
+      button.classList.add('active-tab', 'active');
+      activeBrandFilter = button.getAttribute('data-brand') || 'All';
+      applyVisibilityFilters();
     });
   });
-  const brandBlocks = $all('.brand-block');
-  brandBlocks.forEach(block => block.style.display = 'block');
-  const brandSections = $all('.brand-section');
-  brandSections.forEach(section => section.style.display = 'flex');
+  tabButtons.forEach(btn => btn.classList.remove('active-tab', 'active'));
+  const allTab = document.querySelector('.tab-button[data-brand="All"]');
+  allTab?.classList.add('active-tab', 'active');
+  activeBrandFilter = 'All';
+  applyVisibilityFilters();
 }
 
 // --- Logo Modal Logic ---
@@ -385,12 +493,13 @@ $('#compareBtn')?.addEventListener('click', () => {
   const carCards = Array.from(document.querySelectorAll('.car-card'));
   const carsToCompare = carCards
     .filter(card => {
-      const name = card.getAttribute('data-name') || card.querySelector('h2')?.textContent;
-      return selectedCars.includes(name);
+      const id = card.getAttribute('data-id');
+      return selectedCars.includes(id);
     })
     .map(card => {
       const name = card.getAttribute('data-name') || card.querySelector('h2')?.textContent;
       return {
+        id: card.getAttribute('data-id'),
        name,
         brand: card.getAttribute('data-brand'),
         year: card.getAttribute('data-year'),
@@ -402,8 +511,8 @@ $('#compareBtn')?.addEventListener('click', () => {
       };
     });
   console.log('carsToCompare', carsToCompare);
-  localStorage.setItem('compareCars', JSON.stringify(carsToCompare));
-  window.open('compare.html', '_blank');
+  localStorage.setItem('compareCarIds', JSON.stringify(carsToCompare.map(car => car.id)));
+  window.open(`compare.html?ids=${encodeURIComponent(carsToCompare.map(car => car.id).join(','))}`, '_blank');
 });
 
 function showCompareModal() {
@@ -412,8 +521,9 @@ function showCompareModal() {
   const modalBody = $('#compareModalBody');
   const carCards = Array.from($all('.car-card'));
   const carsToCompare = carCards.filter(card =>
-    selectedCars.includes(card.getAttribute('data-name') || card.querySelector('h2')?.textContent)
+    selectedCars.includes(card.getAttribute('data-id'))
   ).map(card => ({
+    id: card.getAttribute('data-id'),
     name: card.getAttribute('data-name') || card.querySelector('h2')?.textContent,
     brand: card.getAttribute('data-brand'),
     year: card.getAttribute('data-year'),
@@ -474,6 +584,7 @@ window.addEventListener('click', (event) => {
 
 // --- DOMContentLoaded Master ---
 document.addEventListener("DOMContentLoaded", () => {
+  renderLoadingSkeletons();
   $('#searchInput')?.addEventListener('input', searchCars);
   animateCars();
   searchCars();
@@ -486,8 +597,20 @@ document.addEventListener("DOMContentLoaded", () => {
   ensureDescriptions();
   setupLogoModal();
   setupLightboxOverlay();
+  setupScrollReveal();
+  setupHeroParallax();
   loadCarsFromCSV();
   setupAlphaSort()
+
+  document.addEventListener('click', (event) => {
+    const favButton = event.target.closest('.favorite-btn');
+    if (!favButton) return;
+    event.stopPropagation();
+    const carId = favButton.getAttribute('data-car-id');
+    toggleFavoriteCar(carId);
+    favButton.classList.toggle('active', isFavoriteCar(carId));
+    applyVisibilityFilters();
+  });
 
   // Toggle between list and grid view
   const toggleBtn = $("#toggleViewBtn");
@@ -509,17 +632,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add click event to car cards to open a new tab
   function setupCarCardClick() {
     $all('.car-card').forEach(card => {
+      if (card.dataset.boundClick === 'true') return;
+      card.dataset.boundClick = 'true';
       card.addEventListener('click', function (e) {
-        if (e.target.classList.contains('compare-checkbox')) return;
-        // Get car model name
-        const carName = card.querySelector('h2')?.textContent || '';
-        // Find car object from carData
-        const carObj = carData.find(car => car['CAR MODEL'] === carName);
-        if (carObj && carObj['VIDEO_URL']) {
-          window.open(`car-video.html?video=${encodeURIComponent(carObj['VIDEO_URL'])}&model=${encodeURIComponent(carName)}`, '_blank');
-        } else {
-          window.open('car-video.html?model=' + encodeURIComponent(carName), '_blank');
-        }
+        if (e.target.closest('.compare-checkbox') || e.target.closest('.favorite-btn')) return;
+        const carId = card.getAttribute('data-id');
+        addRecentlyViewed(carId);
+        renderRecentlyViewed();
+        window.open(`car-detail.html?id=${encodeURIComponent(carId)}`, '_blank');
       });
     });
   }
@@ -543,11 +663,37 @@ function parseCSV(text) {
 
 // Load cars from CSV and render
 function loadCarsFromCSV() {
-  fetch('cars.json')
-    .then(response => response.json())
+  renderLoadingSkeletons();
+  return fetch('/api/cars')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('API unavailable');
+      }
+      return response.json();
+    })
     .then(json => {
       carData = json;
       renderAllCars();
+    })
+    .catch(() => {
+      // Fallback for static usage when backend is not running.
+      return fetch('cars.json')
+        .then(response => response.json())
+        .then(json => {
+          carData = json.map(car => ({
+            id: car.id || `${String(car['BRAND'] || '').toLowerCase()}-${String(car['CAR MODEL'] || '').toLowerCase()}-${car['YEAR'] || ''}`.replace(/\s+/g, '-'),
+            brand: car['BRAND'] || '',
+            model: car['CAR MODEL'] || '',
+            year: Number(car['YEAR']) || 0,
+            description: car['DESCRIPTION'] || '',
+            imagePath: car['IMAGE PATH'] || '',
+            engine: car['ENGINE'] || '',
+            topSpeed: car['TOP SPEED'] || '',
+            price: car['PRICE'] || '',
+            videoUrl: car['VIDEO_URL'] || ''
+          }));
+          renderAllCars();
+        });
     });
 }
 
@@ -555,26 +701,30 @@ function loadCarsFromCSV() {
 function renderAllCars() {
   $all('.car-gallery').forEach(gallery => gallery.innerHTML = '');
   carData.forEach(car => {
-    const section = document.querySelector(`.car-gallery[data-brand="${car['BRAND']}"]`);
+    const section = document.querySelector(`.car-gallery[data-brand="${car.brand}"]`);
     if (!section) return;
     const card = document.createElement('div');
     card.className = 'car-card animate-car';
-    card.setAttribute('data-brand', car['BRAND']);
-    card.setAttribute('data-year', car['YEAR']);
-    card.setAttribute('data-engine', car['ENGINE'] || '');
-    card.setAttribute('data-topspeed', car['TOP SPEED'] || '');
-    card.setAttribute('data-price', car['PRICE'] || '');
-    card.setAttribute('data-description', car['DESCRIPTION'] || '');
+    card.setAttribute('data-id', car.id);
+    card.setAttribute('data-name', car.model);
+    card.setAttribute('data-brand', car.brand);
+    card.setAttribute('data-year', car.year);
+    card.setAttribute('data-engine', car.engine || '');
+    card.setAttribute('data-topspeed', car.topSpeed || '');
+    card.setAttribute('data-price', car.price || '');
+    card.setAttribute('data-description', car.description || '');
     card.innerHTML = `
-      <h2>${car['CAR MODEL']}</h2>
-      <img src="${car['IMAGE PATH']}" alt="${car['CAR MODEL']}" />
-      <h3>${car['YEAR']} – "${car['DESCRIPTION']}"</h3>
+      <h2>${car.model}</h2>
+      <img src="${car.imagePath}" alt="${car.model}" />
+      <h3>${car.year} – "${car.description}"</h3>
     `;
     section.appendChild(card);
   });
   animateCars();
   ensureDescriptions();
   renderCars();
+  renderRecentlyViewed();
+  applyVisibilityFilters();
 }
 
 function setupAlphaSort() {

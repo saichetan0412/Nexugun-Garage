@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="car-detail-page">
+    <a href="index.html" class="back-link">← Back to Garage</a>
+    <section id="carDetailCard" class="car-detail-card">
+      <p>Loading car details...</p>
+    </section>
+    <section id="similarCarsSection" class="similar-cars-section" style="display:none;">
+      <h2>Similar Cars</h2>
+      <div id="similarCarsGrid" class="similar-cars-grid"></div>
+    </section>
+  </main>
+  <div id="detailCompareBar" class="detail-compare-bar" style="display:none;">
+    <span id="detailCompareCount">0</span> cars selected
+    <button id="detailCompareNowBtn" class="detail-btn detail-btn-primary">Compare Now</button>
+  </div>
+  <script src="car-detail.js"></script>
+</body>
+</html>

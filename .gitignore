@@ -1,0 +1,6 @@
+node_modules/
+npm-debug.log*
+
+# Java automation build outputs
+car-gallery-automation/target/
+car-gallery-automation/test-output/

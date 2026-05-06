@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexugun Garage Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="admin-page">
+    <header class="admin-header">
+      <div>
+        <h1>Nexugun Garage Admin Console</h1>
+        <p>Manage cars, specs, images, and videos.</p>
+      </div>
+      <a class="admin-back-link" href="index.html">Back to Website</a>
+    </header>
+
+    <section class="admin-card">
+      <h2 id="formTitle">Add New Car</h2>
+      <form id="carForm" class="admin-form">
+        <input type="hidden" id="carId" />
+        <label>Brand<input id="brand" required /></label>
+        <label>Model<input id="model" required /></label>
+        <label>Year<input id="year" type="number" required /></label>
+        <label>Description<input id="description" required /></label>
+        <label>Image Path<input id="imagePath" required /></label>
+        <label>Engine<input id="engine" /></label>
+        <label>Top Speed<input id="topSpeed" /></label>
+        <label>Price<input id="price" /></label>
+        <label>Video URL<input id="videoUrl" /></label>
+        <div class="form-actions">
+          <button type="submit" id="saveBtn">Create Car</button>
+          <button type="button" id="cancelEditBtn" class="secondary">Cancel Edit</button>
+        </div>
+      </form>
+      <p id="statusMessage" class="status-message"></p>
+    </section>
+
+    <section class="admin-card">
+      <div class="table-head">
+        <h2>Existing Cars</h2>
+        <button type="button" id="refreshBtn" class="secondary">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Brand</th>
+              <th>Year</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="carsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>
