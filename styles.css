@@ -16,7 +16,7 @@ body {
 }
 
 /* Header Styles */
-.header-main, .header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche, .header-rollsroyce {
+.header-main, .header-lamborghini, .header-bugatti, .header-ferrari, .header-porsche, .header-rollsroyce, .header-mclaren {
   color: #fff;
   padding: 1rem 1.2rem;
   border-radius: 16px;
@@ -50,7 +50,10 @@ body {
 .header-rollsroyce {
   background: linear-gradient(90deg, #303338, #4e5660);
 }
-.header-main h1, .header-lamborghini h1, .header-bugatti h1, .header-ferrari h1, .header-porsche h1, .header-rollsroyce h1 {
+.header-mclaren {
+  background: linear-gradient(90deg, #1a1a1a, #2e2e2e);
+}
+.header-main h1, .header-lamborghini h1, .header-bugatti h1, .header-ferrari h1, .header-porsche h1, .header-rollsroyce h1, .header-mclaren h1 {
   margin: 0;
   z-index: 1;
   position: relative;

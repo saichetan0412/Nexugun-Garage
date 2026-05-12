@@ -34,6 +34,21 @@ npm run dev
 - `PUT /api/cars/:id`
 - `DELETE /api/cars/:id`
 
+## Admin login
+
+- Admin login page: `/admin-login.html`
+- Admin console page: `/admin.html`
+- Protected mutation APIs: `POST/PUT/DELETE /api/cars`
+- Session duration: 24 hours (HTTP-only cookie)
+
+Environment variables (recommended):
+
+```bash
+ADMIN_USERNAME=your_admin_username
+ADMIN_PASSWORD=your_admin_password
+SESSION_SECRET=your_long_random_secret
+```
+
 ### Example payload for create/update
 
 ```json

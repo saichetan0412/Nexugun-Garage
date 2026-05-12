@@ -217,7 +217,7 @@ function renderCarDetail(car) {
 
   document.getElementById('detailVideoBtn')?.addEventListener('click', () => {
     if (car.videoUrl) {
-      window.open(`car-video.html?video=${encodeURIComponent(car.videoUrl)}&model=${encodeURIComponent(car.model)}`, '_blank');
+      window.open(`car-video.html?id=${encodeURIComponent(car.id)}&video=${encodeURIComponent(car.videoUrl)}&model=${encodeURIComponent(car.model)}`, '_blank');
     } else {
       showDetailToast('No video available for this car yet.');
     }

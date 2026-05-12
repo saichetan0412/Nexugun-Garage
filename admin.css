@@ -16,6 +16,11 @@ body {
   gap: 1rem;
   margin-bottom: 1rem;
 }
+.admin-header-actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
 h1, h2 {
   font-family: 'Rajdhani', sans-serif;
   letter-spacing: .04em;
@@ -28,6 +33,15 @@ h1, h2 {
   padding: .55rem .85rem;
   border-radius: 8px;
   font-weight: 700;
+}
+.admin-logout-btn {
+  background: #1d1d1d;
+  color: #f0f0f0;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.admin-logout-btn:hover {
+  border-color: rgba(255, 179, 0, 0.45);
+  color: #ffca57;
 }
 .admin-card {
   background: #141414;

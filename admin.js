@@ -5,6 +5,40 @@ const formTitle = document.getElementById('formTitle');
 const saveBtn = document.getElementById('saveBtn');
 const cancelEditBtn = document.getElementById('cancelEditBtn');
 const refreshBtn = document.getElementById('refreshBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const DEFAULT_BACKEND_ORIGIN = 'http://localhost:3000';
+const DEFAULT_IMAGE_PATH = 'Images/placeholder.jpg';
+let backendOrigin = window.location.origin;
+
+function redirectToLogin() {
+  window.location.href = `${backendOrigin}/admin-login.html`;
+}
+
+async function resolveBackendOrigin() {
+  const candidates = [window.location.origin, DEFAULT_BACKEND_ORIGIN];
+  for (const origin of candidates) {
+    try {
+      const response = await fetch(`${origin}/api/admin/session`, { credentials: 'include' });
+      if (response.ok || response.status === 401) {
+        backendOrigin = origin;
+        return origin;
+      }
+    } catch {
+      // try next candidate
+    }
+  }
+  backendOrigin = window.location.origin;
+  return backendOrigin;
+}
+
+async function ensureAdminSession() {
+  const response = await fetch(`${backendOrigin}/api/admin/session`, { credentials: 'include' });
+  if (!response.ok) {
+    redirectToLogin();
+    return false;
+  }
+  return true;
+}
 
 function fields() {
   return {
@@ -28,7 +62,7 @@ function getPayload() {
     model: f.model.value.trim(),
     year: Number(f.year.value),
     description: f.description.value.trim(),
-    imagePath: f.imagePath.value.trim(),
+    imagePath: f.imagePath.value.trim() || DEFAULT_IMAGE_PATH,
     engine: f.engine.value.trim(),
     topSpeed: f.topSpeed.value.trim(),
     price: f.price.value.trim(),
@@ -65,7 +99,11 @@ function fillForm(car) {
 }
 
 async function fetchCars() {
-  const response = await fetch('/api/cars');
+  const response = await fetch(`${backendOrigin}/api/cars`, { credentials: 'include' });
+  if (response.status === 401) {
+    redirectToLogin();
+    throw new Error('Unauthorized');
+  }
   if (!response.ok) throw new Error('Failed to fetch cars');
   return response.json();
 }
@@ -90,7 +128,7 @@ async function renderTable() {
   carsTableBody.querySelectorAll('.edit-btn').forEach(button => {
     button.addEventListener('click', async () => {
       const id = button.getAttribute('data-id');
-      const response = await fetch(`/api/cars/${encodeURIComponent(id)}`);
+      const response = await fetch(`${backendOrigin}/api/cars/${encodeURIComponent(id)}`, { credentials: 'include' });
       if (!response.ok) {
         setStatus('Unable to load car details.', true);
         return;
@@ -103,7 +141,11 @@ async function renderTable() {
     button.addEventListener('click', async () => {
       const id = button.getAttribute('data-id');
       if (!window.confirm('Delete this car?')) return;
-      const response = await fetch(`/api/cars/${encodeURIComponent(id)}`, { method: 'DELETE' });
+      const response = await fetch(`${backendOrigin}/api/cars/${encodeURIComponent(id)}`, { method: 'DELETE', credentials: 'include' });
+      if (response.status === 401) {
+        redirectToLogin();
+        return;
+      }
       if (!response.ok) {
         setStatus('Delete failed.', true);
         return;
@@ -122,11 +164,20 @@ form.addEventListener('submit', async (event) => {
   const payload = getPayload();
   const isEdit = Boolean(id);
 
-  const response = await fetch(isEdit ? `/api/cars/${encodeURIComponent(id)}` : '/api/cars', {
+  const response = await fetch(
+    isEdit ? `${backendOrigin}/api/cars/${encodeURIComponent(id)}` : `${backendOrigin}/api/cars`,
+    {
     method: isEdit ? 'PUT' : 'POST',
+    credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  });
+    }
+  );
+
+  if (response.status === 401) {
+    redirectToLogin();
+    return;
+  }
 
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
@@ -149,8 +200,16 @@ refreshBtn.addEventListener('click', async () => {
   setStatus('List refreshed.');
 });
 
+logoutBtn?.addEventListener('click', async () => {
+  await fetch(`${backendOrigin}/api/admin/logout`, { method: 'POST', credentials: 'include' });
+  redirectToLogin();
+});
+
 window.addEventListener('DOMContentLoaded', async () => {
   try {
+    await resolveBackendOrigin();
+    const ok = await ensureAdminSession();
+    if (!ok) return;
     await renderTable();
     setStatus('Admin console ready.');
   } catch (error) {

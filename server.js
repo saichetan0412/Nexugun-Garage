@@ -6,9 +6,13 @@ const crypto = require("crypto");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, "cars.json");
+const DEFAULT_IMAGE_PATH = "Images/placeholder.jpg";
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "SaiChetan0412";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "Chet@n0412";
+const SESSION_SECRET = process.env.SESSION_SECRET || "change-this-secret-in-production";
+const SESSION_TTL_MS = 24 * 60 * 60 * 1000;
 
 app.use(express.json());
-app.use(express.static(__dirname));
 
 function buildStableId(row) {
   const raw = `${row.BRAND || ""}-${row["CAR MODEL"] || ""}-${row.YEAR || ""}`
@@ -23,7 +27,7 @@ const toApiCar = (row) => ({
   model: row["CAR MODEL"] || "",
   year: Number(row.YEAR) || 0,
   description: row.DESCRIPTION || "",
-  imagePath: row["IMAGE PATH"] || "",
+  imagePath: row["IMAGE PATH"] || DEFAULT_IMAGE_PATH,
   engine: row.ENGINE || "",
   topSpeed: row["TOP SPEED"] || "",
   price: row.PRICE || "",
@@ -79,7 +83,7 @@ function applyFilters(cars, query) {
 }
 
 function validateCarInput(input, isPatch = false) {
-  const requiredFields = ["brand", "model", "year", "description", "imagePath"];
+  const requiredFields = ["brand", "model", "year", "description"];
   if (!isPatch) {
     for (const field of requiredFields) {
       if (input[field] === undefined || input[field] === null || input[field] === "") {
@@ -92,6 +96,115 @@ function validateCarInput(input, isPatch = false) {
   }
   return null;
 }
+
+function parseCookies(req) {
+  const header = req.headers.cookie || "";
+  const pairs = header.split(";").map((part) => part.trim()).filter(Boolean);
+  const cookies = {};
+  for (const pair of pairs) {
+    const idx = pair.indexOf("=");
+    if (idx === -1) continue;
+    const key = decodeURIComponent(pair.slice(0, idx).trim());
+    const value = decodeURIComponent(pair.slice(idx + 1).trim());
+    cookies[key] = value;
+  }
+  return cookies;
+}
+
+function createSessionToken(username) {
+  const payload = {
+    u: username,
+    exp: Date.now() + SESSION_TTL_MS,
+    nonce: crypto.randomBytes(8).toString("hex"),
+  };
+  const payloadB64 = Buffer.from(JSON.stringify(payload), "utf8").toString("base64url");
+  const sig = crypto.createHmac("sha256", SESSION_SECRET).update(payloadB64).digest("base64url");
+  return `${payloadB64}.${sig}`;
+}
+
+function verifySessionToken(token) {
+  if (!token || typeof token !== "string" || !token.includes(".")) return null;
+  const [payloadB64, signature] = token.split(".");
+  const expectedSig = crypto.createHmac("sha256", SESSION_SECRET).update(payloadB64).digest("base64url");
+  const sigBuf = Buffer.from(signature || "");
+  const expectedBuf = Buffer.from(expectedSig);
+  if (sigBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(sigBuf, expectedBuf)) {
+    return null;
+  }
+  const payload = JSON.parse(Buffer.from(payloadB64, "base64url").toString("utf8"));
+  if (!payload || payload.exp < Date.now()) return null;
+  return payload;
+}
+
+function setSessionCookie(res, token) {
+  const parts = [
+    `ng_admin_session=${encodeURIComponent(token)}`,
+    "HttpOnly",
+    "SameSite=Lax",
+    "Path=/",
+    `Max-Age=${Math.floor(SESSION_TTL_MS / 1000)}`,
+  ];
+  res.setHeader("Set-Cookie", parts.join("; "));
+}
+
+function clearSessionCookie(res) {
+  res.setHeader("Set-Cookie", "ng_admin_session=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0");
+}
+
+function requireAdminAuth(req, res, next) {
+  const cookies = parseCookies(req);
+  const session = verifySessionToken(cookies.ng_admin_session);
+  if (!session || session.u !== ADMIN_USERNAME) {
+    return res.status(401).json({ error: "Unauthorized. Admin login required." });
+  }
+  next();
+}
+
+app.post("/api/admin/login", (req, res) => {
+  const username = String(req.body?.username || "").trim();
+  const password = String(req.body?.password || "").trim();
+  if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+    return res.status(401).json({ error: "Invalid username or password." });
+  }
+  const token = createSessionToken(username);
+  setSessionCookie(res, token);
+  res.json({ message: "Login successful." });
+});
+
+app.post("/api/admin/logout", (req, res) => {
+  clearSessionCookie(res);
+  res.status(204).send();
+});
+
+app.get("/api/admin/session", (req, res) => {
+  const cookies = parseCookies(req);
+  const session = verifySessionToken(cookies.ng_admin_session);
+  if (!session || session.u !== ADMIN_USERNAME) {
+    return res.status(401).json({ authenticated: false });
+  }
+  res.json({ authenticated: true, username: session.u });
+});
+
+app.get("/admin.html", (req, res, next) => {
+  const cookies = parseCookies(req);
+  const session = verifySessionToken(cookies.ng_admin_session);
+  if (!session || session.u !== ADMIN_USERNAME) {
+    return res.redirect("/admin-login.html");
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  if (
+    (req.method === "POST" || req.method === "PUT" || req.method === "DELETE") &&
+    (req.path === "/api/cars" || req.path.startsWith("/api/cars/"))
+  ) {
+    return requireAdminAuth(req, res, next);
+  }
+  next();
+});
+
+app.use(express.static(__dirname));
 
 app.get("/api/cars", async (req, res) => {
   try {
@@ -130,7 +243,7 @@ app.post("/api/cars", async (req, res) => {
       model: String(req.body.model),
       year: Number(req.body.year),
       description: String(req.body.description),
-      imagePath: String(req.body.imagePath),
+      imagePath: String(req.body.imagePath || DEFAULT_IMAGE_PATH),
       engine: String(req.body.engine || ""),
       topSpeed: String(req.body.topSpeed || ""),
       price: String(req.body.price || ""),

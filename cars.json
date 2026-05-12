@@ -21,7 +21,7 @@
     "ENGINE": "6.5L V12",
     "TOP SPEED": "350 km/h",
     "PRICE": "$600,000.00",
-    "VIDEO_URL": ""
+    "VIDEO_URL": "Videos/Lamborghini_Revuelto.mp4"
   },
   {
     "id": "34f97a165cc0ea0e",
@@ -69,7 +69,7 @@
     "ENGINE": "6.5L V12",
     "TOP SPEED": "350 km/h",
     "PRICE": "$450,000.00",
-    "VIDEO_URL": ""
+    "VIDEO_URL": "Videos/Lamborghini_Sian.mp4"
   },
   {
     "id": "50c3c309500d7611",
@@ -1005,6 +1005,42 @@
     "ENGINE": "6.0L V12",
     "TOP SPEED": "350 km/h",
     "PRICE": "$3,000,000.00",
+    "VIDEO_URL": ""
+  },
+  {
+    "id": "cf609f5e-4219-463b-b49f-9386df6ee0e8",
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari Amalfi",
+    "YEAR": 2026,
+    "DESCRIPTION": "Redefine the concept of contemporary sportiness",
+    "IMAGE PATH": "Images/placeholder.jpg",
+    "ENGINE": "3.9L V8",
+    "TOP SPEED": "320 km/h",
+    "PRICE": "$283,000.00",
+    "VIDEO_URL": ""
+  },
+  {
+    "id": "e83fd1c9-ebea-4ad0-9f09-206836f37063",
+    "BRAND": "Ferrari",
+    "CAR MODEL": "Ferrari F80",
+    "YEAR": 2025,
+    "DESCRIPTION": "Pinnacle of cutting-edge",
+    "IMAGE PATH": "Images/Ferrari/Ferrari-F80.jpg",
+    "ENGINE": "3.0L V6",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$3,900,000.00",
+    "VIDEO_URL": ""
+  },
+  {
+    "id": "18bd710e-9a48-4685-8467-12de370e48b2",
+    "BRAND": "McLaren",
+    "CAR MODEL": "McLaren W1",
+    "YEAR": 2025,
+    "DESCRIPTION": "The Ultimate expression of a real supercar",
+    "IMAGE PATH": "Images/McLaren/McLaren_W1.jpg",
+    "ENGINE": "4.0L V8",
+    "TOP SPEED": "350 km/h",
+    "PRICE": "$2,100,000.00",
     "VIDEO_URL": ""
   }
 ]

@@ -1,5 +1,6 @@
 let carData = []; // Holds normalized API car objects
 let activeBrandFilter = 'All';
+const DEFAULT_IMAGE_PATH = 'Images/placeholder.jpg';
 
 // --- Utility Functions ---
 function $(selector) {
@@ -63,7 +64,7 @@ function renderRecentlyViewed() {
   section.style.display = 'block';
   list.innerHTML = items.map(car => `
     <button class="recent-car-chip" data-car-id="${car.id}">
-      <img src="${car.imagePath}" alt="${car.model}" />
+      <img src="${car.imagePath || DEFAULT_IMAGE_PATH}" alt="${car.model}" />
       <span>${car.model}</span>
     </button>
   `).join('');
@@ -686,7 +687,7 @@ function loadCarsFromCSV() {
             model: car['CAR MODEL'] || '',
             year: Number(car['YEAR']) || 0,
             description: car['DESCRIPTION'] || '',
-            imagePath: car['IMAGE PATH'] || '',
+            imagePath: car['IMAGE PATH'] || DEFAULT_IMAGE_PATH,
             engine: car['ENGINE'] || '',
             topSpeed: car['TOP SPEED'] || '',
             price: car['PRICE'] || '',
@@ -715,7 +716,7 @@ function renderAllCars() {
     card.setAttribute('data-description', car.description || '');
     card.innerHTML = `
       <h2>${car.model}</h2>
-      <img src="${car.imagePath}" alt="${car.model}" />
+      <img src="${car.imagePath || DEFAULT_IMAGE_PATH}" alt="${car.model}" />
       <h3>${car.year} – "${car.description}"</h3>
     `;
     section.appendChild(card);

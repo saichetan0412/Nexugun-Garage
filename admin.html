@@ -16,7 +16,10 @@
         <h1>Nexugun Garage Admin Console</h1>
         <p>Manage cars, specs, images, and videos.</p>
       </div>
-      <a class="admin-back-link" href="index.html">Back to Website</a>
+      <div class="admin-header-actions">
+        <a class="admin-back-link" href="index.html">Back to Website</a>
+        <button type="button" id="logoutBtn" class="admin-logout-btn">Logout</button>
+      </div>
     </header>
 
     <section class="admin-card">
@@ -27,11 +30,11 @@
         <label>Model<input id="model" required /></label>
         <label>Year<input id="year" type="number" required /></label>
         <label>Description<input id="description" required /></label>
-        <label>Image Path<input id="imagePath" required /></label>
+        <label>Image Path (Optional)<input id="imagePath" /></label>
         <label>Engine<input id="engine" /></label>
         <label>Top Speed<input id="topSpeed" /></label>
         <label>Price<input id="price" /></label>
-        <label>Video URL<input id="videoUrl" /></label>
+        <label>Video URL (Optional)<input id="videoUrl" /></label>
         <div class="form-actions">
           <button type="submit" id="saveBtn">Create Car</button>
           <button type="button" id="cancelEditBtn" class="secondary">Cancel Edit</button>

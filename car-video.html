@@ -71,18 +71,50 @@
   </div>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const videoUrl = params.get('video');
-    const model = params.get('model');
-    document.getElementById('carTitle').textContent = model ? decodeURIComponent(model) : '';
-    if (videoUrl) {
-      document.getElementById('videoContainer').innerHTML =
+    const directVideo = params.get('video');
+    const directModel = params.get('model');
+    const carId = params.get('id');
+    const titleEl = document.getElementById('carTitle');
+    const container = document.getElementById('videoContainer');
+
+    function renderVideo(videoUrl, modelName) {
+      titleEl.textContent = modelName || '';
+      container.innerHTML =
         `<video class="video-player-full" controls autoplay>
            <source src="${videoUrl}" type="video/mp4">
            Your browser does not support the video tag.
          </video>`;
+    }
+
+    function renderNoVideo(message) {
+      titleEl.textContent = 'Video Unavailable';
+      container.innerHTML =
+        `<div style="color:#fff;font-size:1.4rem;text-align:center;margin-top:40vh;padding:0 16px;">${message}</div>`;
+    }
+
+    async function loadById(id) {
+      try {
+        const response = await fetch(`/api/cars/${encodeURIComponent(id)}`);
+        if (!response.ok) throw new Error('Car not found');
+        const car = await response.json();
+        const videoUrl = (car.videoUrl || car.VIDEO_URL || '').trim();
+        const modelName = car.model || car['CAR MODEL'] || '';
+        if (videoUrl) {
+          renderVideo(videoUrl, modelName);
+          return;
+        }
+        renderNoVideo(`No video is configured for ${modelName || 'this car'} yet.`);
+      } catch {
+        renderNoVideo('Unable to load car video details.');
+      }
+    }
+
+    if (directVideo) {
+      renderVideo(directVideo, directModel ? decodeURIComponent(directModel) : '');
+    } else if (carId) {
+      loadById(carId);
     } else {
-      document.getElementById('videoContainer').innerHTML =
-        `<div style="color:#fff;font-size:2rem;text-align:center;margin-top:40vh;">No video available for this car.</div>`;
+      renderNoVideo('Open this page from a car details page to watch its film.');
     }
   </script>
 </body>
